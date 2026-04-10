@@ -137,26 +137,20 @@ The code is open source. The compliance is verifiable by anyone -- not a vendor 
 
 ---
 
-## Pricing
+## Get In Touch
 
-| Tier | Price | Includes |
-|------|-------|----------|
-| Community | Free | Contribute + cryptographic receipts |
-| Pro | $99/month | + Market maps, vendor rankings, threat maps |
-| Enterprise | $499/month | + API access, dashboard, RFP generation |
+Interested in the full platform, the private codebase, or just want to talk about what you're seeing in the field?
+
+<div align="center">
+
+**[Message me on Signal](https://signal.me/#eu/priXbXasKbQOYugFXOJKfokwZCFrS94cKAOwBlV0tIZ8d563wcpIXIQYRpIdG3p_)**
+
+[nur.saramena.us](https://nur.saramena.us)
+
+</div>
 
 ---
 
 ## License
 
-**Code:** [AGPL-3.0](LICENSE) -- free for open source. Commercial use requires a [separate license](mailto:murtaza@saramena.us).
-
-**Data:** [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/)
-
----
-
-<div align="center">
-
-[nur.saramena.us](https://nur.saramena.us)
-
-</div>
+**Code:** [AGPL-3.0](LICENSE) | **Data:** [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/)
