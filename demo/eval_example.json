@@ -1,0 +1,12 @@
+{
+  "type": "vendor_eval",
+  "vendor": "CrowdStrike Falcon",
+  "category": "EDR",
+  "dimensions": {
+    "detection": {"overall_score": 9.2, "detection_rate": 94.5, "false_positive_rate": 2.1},
+    "price": {"annual_cost_range": "100k-250k", "per_seat": "$15-25", "contract_length_months": 36},
+    "support": {"quality": 8.5, "escalation_ease": 7.0, "sla_response_hours": 4},
+    "performance": {"cpu_overhead_pct": 3.2, "memory_mb": 180, "scan_latency_ms": 45, "deploy_time_days": 14},
+    "decision": {"chose_this_vendor": true, "main_factor": "detection_quality", "would_buy_again": true}
+  }
+}

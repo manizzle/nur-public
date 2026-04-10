@@ -1,0 +1,9 @@
+{
+  "type": "attack_map",
+  "campaign_type": "ransomware",
+  "techniques": ["T1566.001", "T1059.001", "T1486", "T1490"],
+  "detection_coverage": {"T1566.001": true, "T1059.001": true, "T1486": false, "T1490": false},
+  "coverage_score": 0.50,
+  "remediation": {"primary_action": "containment", "stopped_attack": true, "time_to_contain_hours": 4.5},
+  "tools_involved": ["crowdstrike_falcon", "splunk_es", "palo_alto_cortex"]
+}
