@@ -4,6 +4,8 @@
 
 **Peer-verified security intelligence -- what your peers actually use, what they pay, and what stopped the attack.**
 
+<img src="demo/nur-demo.gif" alt="nur demo" width="750" />
+
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square)](https://python.org)
 [![Vendors Tracked](https://img.shields.io/badge/vendors-3%2C000%2B%20tracked-orange?style=flat-square)](#)
@@ -16,58 +18,21 @@
 
 Vendor bakeoffs are duplicated across every org. Gartner costs six figures and is pay-to-play. G2 reviews are gamed. Signal DMs to peers are the real system -- unscalable and unstructured.
 
-A CISO evaluated 12 vendors last quarter. All sounded the same.
+A CISO evaluated 12 AI security vendors for the Board last quarter. They all sounded the same. Different logos. Different positioning decks. Same pitch.
 
-An analyst with 4,000+ vendors in his database told us: "We're missing a very important part -- what works. We don't know."
+An analyst with 4,000+ vendors in his database told us: *"We're missing a very important part -- what works. We don't know."*
+
+The data that matters -- what tool stopped the attack, what the real cost was, how long deployment took -- doesn't exist anywhere. nur fixes that.
 
 ---
 
 ## How It Works
 
-**1. Contribute** -- Rate a vendor, submit attack data, or report IOCs. 60 seconds.
+**1. Contribute** -- Rate a vendor, submit attack data, or report IOCs. Via web form, CLI, or voice. 60 seconds.
 
-**2. Aggregate** -- Data committed, running sums updated, individual values discarded.
+**2. Aggregate** -- Your data is committed cryptographically, running sums are updated, and individual values are discarded. The server never sees who contributed what.
 
-**3. Query** -- Get back what peers across your vertical actually use, pay, and what stopped attacks.
-
----
-
-## What You Can Evaluate
-
-| Dimension | What It Captures |
-|-----------|-----------------|
-| Detection | Overall score, detection rate, false positive rate |
-| Price | Annual cost, per-seat pricing, contract length, discount percentage |
-| Support | Quality score, escalation ease, SLA response hours |
-| Performance | CPU overhead, memory usage, scan latency, deploy time |
-| Decision | Chose this vendor?, main factor, would buy again? |
-
----
-
-## Quick Start
-
-```bash
-pip install nur
-
-nur init
-
-nur register you@yourorg.com
-
-# Submit a vendor evaluation
-nur eval --vendor crowdstrike
-
-# Query aggregate market intelligence
-nur market edr
-
-# Report IOCs
-nur report lockbit_iocs.json
-```
-
----
-
-## Architecture
-
-Three parties. No trust required.
+**3. Query** -- Get back what peers across your vertical actually use, what they pay, and what stopped real attacks. Cryptographic receipts prove your data was counted.
 
 ```mermaid
 sequenceDiagram
@@ -98,56 +63,77 @@ sequenceDiagram
     end
 ```
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for the full protocol walkthrough.
+---
+
+## What You Can Evaluate
+
+| Dimension | What It Captures |
+|-----------|-----------------|
+| Detection | Overall score, detection rate, false positive rate |
+| Price | Annual cost, per-seat pricing, contract length, discount |
+| Support | Quality score, escalation ease, SLA response time |
+| Performance | CPU overhead, memory usage, scan latency, deploy time |
+| Decision | Chose this vendor?, main decision factor, would buy again? |
+
+All fields committed, aggregated, individual values discarded.
 
 ---
 
-## Cryptographic Primitives
+## Quick Start
 
-| Primitive | Purpose | Property |
-|-----------|---------|----------|
-| Pedersen Commitments | Hiding individual values in aggregates | Server can't alter values |
-| Merkle Trees | Binding all contributions immutably | Can't add/remove undetected |
-| ZKP Range Proofs | Validating scores without revealing them | Valid scores without revealing |
-| Behavioral Differential Privacy | Defending against data poisoning | Behavior-based poisoning defense |
-| Dice Chains | End-to-end verification of data transformation | End-to-end verification |
-| Blind Category Discovery | Organic taxonomy creation | New categories without server learning names |
+```bash
+pip install nur
+nur init
+nur register you@yourorg.com
+nur eval --vendor crowdstrike        # submit a vendor evaluation
+nur market edr                       # see what peers actually use
+nur report lockbit_iocs.json         # upload IOCs, get remediation intel
+```
 
----
-
-## What Gets Stored vs Discarded
-
-| Stored (server retains) | Discarded (gone after commit) |
-|------------------------|------------------------------|
-| Commitment hashes | Individual scores |
-| Running sums per vendor | Per-org attribution |
-| Technique frequency counters | Free-text notes |
-| Merkle tree of all commitments | Raw IOC values |
-| Eval dimension aggregates | Raw dollar amounts |
-| BDP credibility scores | Per-org credibility profiles |
-| Dice chain hashes | Pre-submission payload content |
+Or contribute via web -- no CLI needed: **[nur.saramena.us/contribute](https://nur.saramena.us/contribute)**
 
 ---
 
-## Compliance
+## Cryptographic Guarantees
 
-nur's anonymization pipeline clears **HIPAA Safe Harbor** (all 18 identifiers verified programmatically), **GDPR Recital 26** (re-identification assessed as not reasonably likely), and qualifies for **CISA 2015** safe harbor protections (liability shield, antitrust protection, FOIA exemption).
-
-The code is open source. The compliance is verifiable by anyone.
-
-See [COMPLIANCE.md](COMPLIANCE.md) for the full analysis.
+| Primitive | What It Does |
+|-----------|-------------|
+| Pedersen Commitments | Server can't alter your values after receipt |
+| Merkle Trees | Server can't add or remove contributions undetected |
+| ZKP Range Proofs | Proves scores are valid without revealing them |
+| Dice Chains | Client-side hash matches server commitment end-to-end |
+| Blind Category Discovery | New threat categories emerge without server learning names until quorum |
+| Behavioral Data Poisoning Defense | Trust scoring based on contribution patterns, not identity |
 
 ---
 
-## Data Collection
+## What Leaves Your Organization
 
-All anonymization runs **client-side** before any data leaves your organization. The server never sees raw data.
+All anonymization runs **client-side** -- on your machine, before anything is transmitted. You can read every line of code.
 
-Current: CLI and web form submission.
+| Transmitted | Stripped Before Transmission |
+|------------|----------------------------|
+| Numeric scores (e.g. `9.2`) | Free-text notes |
+| Detection rates | IP addresses, hostnames |
+| Boolean flags (`would_buy: true`) | Employee names, org identity |
+| MITRE technique IDs (`T1566`) | Sigma rules, action strings |
+| Hashed IOC values (SHA-256) | Network topology |
+| Remediation categories | Raw dollar amounts |
 
-Coming soon: browser extension and dashboard connectors for zero-friction data collection from tools you already use.
+**Server-side:** individual values are discarded after aggregation. Only commitment hashes and running sums are retained. No per-organization attribution is possible.
 
-You see all the code.
+---
+
+## Regulatory Compliance
+
+nur's anonymization pipeline meets federal de-identification standards:
+
+- **HIPAA Safe Harbor** (45 CFR 164.514(b)) -- all 18 identifiers mapped and verified programmatically
+- **GDPR Recital 26** -- re-identification risk assessed across 4 vectors; individual values discarded, only aggregates retained
+- **CISA 2015** -- threat intelligence sharing is explicitly protected with liability shield, antitrust exemption, and FOIA exemption
+- **Attorney-client privilege** -- IR firms contribute technique IDs and detection rates, not forensic report content; privilege chain is never touched
+
+The code is open source. The compliance is verifiable by anyone -- not a vendor assertion.
 
 ---
 
@@ -155,25 +141,17 @@ You see all the code.
 
 | Tier | Price | Includes |
 |------|-------|----------|
-| Community | Free | Contribute + receive cryptographic receipts |
-| Pro | $99/month | + Market maps, threat maps |
+| Community | Free | Contribute + cryptographic receipts |
+| Pro | $99/month | + Market maps, vendor rankings, threat maps |
 | Enterprise | $499/month | + API access, dashboard, RFP generation |
-
----
-
-## Documentation
-
-- [Architecture](ARCHITECTURE.md) -- Protocol flow, dice chains, data lifecycle
-- [Protocol](PROTOCOL.md) -- Full protocol specification
-- [Compliance](COMPLIANCE.md) -- HIPAA, GDPR, CISA 2015 analysis
-- [Contributing](CONTRIBUTING.md) -- How to contribute data and code
 
 ---
 
 ## License
 
-- **Code:** [AGPL-3.0](LICENSE)
-- **Data:** [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/)
+**Code:** [AGPL-3.0](LICENSE) -- free for open source. Commercial use requires a [separate license](mailto:murtaza@saramena.us).
+
+**Data:** [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/)
 
 ---
 

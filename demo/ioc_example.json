@@ -1,8 +1,0 @@
-{
-  "type": "ioc_bundle",
-  "ioc_count": 15,
-  "ioc_types": {"ipv4": 5, "domain": 4, "sha256": 6},
-  "campaign_match": "lockbit_3.0",
-  "confidence": 0.87,
-  "note": "All IOC values are SHA-256 hashed before transmission. Raw values never leave your machine."
-}
