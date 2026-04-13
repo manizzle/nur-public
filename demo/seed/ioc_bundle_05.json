@@ -1,0 +1,215 @@
+{
+  "iocs": [
+    {
+      "ioc_type": "ip",
+      "value_raw": "156.216.88.76",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://selot.jp.net/",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://xn--gmq90amm486bwinn5dqrt.jp.net/",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "antenistabarcelona.com",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "concel.co.com",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "email.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "gate.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "mail9.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "mails.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "malware.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "mx5.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "newmail.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "selot.jp.net",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "smtp1.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "sniper.webtechcorp.co.uk",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "xn--gmq90amm486bwinn5dqrt.jp.net",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "ip",
+      "value_raw": "137.184.38.192",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "ip",
+      "value_raw": "137.184.38.192",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "ip",
+      "value_raw": "178.16.52.58",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "hash-md5",
+      "value_raw": "f0b410ca0ba79d284cf7f88327818a62",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "hash-sha256",
+      "value_raw": "d90e46cbdba6a5fae2cf4cdddd1764470a804924e00912e24308c71f79ebc622",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "hash-sha1",
+      "value_raw": "d92091352af70ee224c79d751dea42bcc6609731",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "hash-sha256",
+      "value_raw": "df77882b491689f9e5672f9be082dd390d979dff8a0f7839fb301d629c14b533",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "hash-md5",
+      "value_raw": "d49919f4d02f9166510fc18a681bb771",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "hash-sha1",
+      "value_raw": "c4e09ca8c6ddd8342fe0a4e32f39a7e4613e0e43",
+      "threat_actor": "AsyncRAT",
+      "campaign": "win.asyncrat",
+      "detected_by": [],
+      "missed_by": []
+    }
+  ],
+  "tools_in_scope": [
+    "crowdstrike",
+    "sentinelone",
+    "palo-alto"
+  ],
+  "source": "threat-feed",
+  "notes": "Real IOCs associated with win.asyncrat from ThreatFox abuse.ch feed.",
+  "context": {
+    "industry": "financial",
+    "org_size": "5000-10000"
+  }
+}

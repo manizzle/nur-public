@@ -1,0 +1,43 @@
+{
+  "iocs": [
+    {
+      "ioc_type": "domain",
+      "value_raw": "lockbit-decryptor.onion.ws",
+      "detected_by": [
+        "palo-alto"
+      ],
+      "threat_actor": "LockBit",
+      "campaign": "lockbit-3.0-healthcare"
+    },
+    {
+      "ioc_type": "hash-sha256",
+      "value_raw": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+      "detected_by": [
+        "crowdstrike",
+        "sentinelone"
+      ],
+      "threat_actor": "LockBit",
+      "campaign": "lockbit-3.0-healthcare"
+    },
+    {
+      "ioc_type": "ip",
+      "value_raw": "91.243.44.78",
+      "detected_by": [
+        "palo-alto"
+      ],
+      "threat_actor": "LockBit",
+      "campaign": "lockbit-3.0-healthcare"
+    }
+  ],
+  "tools_in_scope": [
+    "crowdstrike",
+    "sentinelone",
+    "palo-alto"
+  ],
+  "source": "incident",
+  "notes": "LockBit 3.0 targeting pediatric hospital network. Caught by EDR before full encryption.",
+  "context": {
+    "industry": "healthcare",
+    "org_size": "500-1000"
+  }
+}

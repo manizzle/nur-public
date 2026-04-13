@@ -1,0 +1,215 @@
+{
+  "iocs": [
+    {
+      "ioc_type": "url",
+      "value_raw": "http://statsinfos.com/",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "ip",
+      "value_raw": "196.202.102.11",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "nanaonsol.lol",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://virtual-cdncloud.sbs/api/index.php",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://lenaganci.network/api/is-banned",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://lenaganci.network/api/visit",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://lenaganci.network/api/config",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "lenaganci.network",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://blockstreet.life/auth?xc=934805",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "blockstreet.life",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://fishdomen.lat/api/is-banned",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://fishdomen.lat/api/config",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://fishdomen.lat/api/visit",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "fishdomen.lat",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://stormrae.run/auth?xc=920381",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "stormrae.run",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://maestroandperunamoneymoney.lol/api/is-banned",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://maestroandperunamoneymoney.lol/api/config",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "maestroandperunamoneymoney.lol",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://ribkamnetwork.lol/api/is-banned",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://ribkamnetwork.lol/api/config",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://ribkamnetwork.lol/api/visit",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "ribkamnetwork.lol",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "url",
+      "value_raw": "https://exchanges.lat/auth?xc=917550",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "exchanges.lat",
+      "threat_actor": "Unknown malware",
+      "campaign": "unknown",
+      "detected_by": [],
+      "missed_by": []
+    }
+  ],
+  "tools_in_scope": [
+    "crowdstrike",
+    "sentinelone",
+    "palo-alto"
+  ],
+  "source": "threat-feed",
+  "notes": "Real IOCs associated with unknown from ThreatFox abuse.ch feed.",
+  "context": {
+    "industry": "financial",
+    "org_size": "5000-10000"
+  }
+}

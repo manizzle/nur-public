@@ -1,0 +1,12 @@
+[lint]
+ignore = [
+    "E402",   # module-level import not at top (needed for secrets loading)
+    "E501",   # line too long
+    "E701",   # multiple statements on one line (used in compact conditionals)
+    "E741",   # ambiguous variable name
+    "F841",   # unused variable (common in tests)
+]
+
+[lint.per-file-ignores]
+"nur/tests/*" = ["F401", "F811"]       # unused imports OK in tests
+"**/__init__.py" = ["F401"]            # re-exports in all __init__ files

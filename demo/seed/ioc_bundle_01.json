@@ -1,0 +1,49 @@
+{
+  "iocs": [
+    {
+      "ioc_type": "domain",
+      "value_raw": "lockbit-decryptor.onion.ws",
+      "detected_by": [
+        "palo-alto"
+      ],
+      "threat_actor": "LockBit",
+      "campaign": "lockbit-3.0-healthcare"
+    },
+    {
+      "ioc_type": "ip",
+      "value_raw": "45.33.32.156",
+      "detected_by": [
+        "palo-alto"
+      ],
+      "threat_actor": "LockBit",
+      "campaign": "lockbit-3.0-healthcare"
+    },
+    {
+      "ioc_type": "domain",
+      "value_raw": "lb3-support.onion.ws",
+      "detected_by": [],
+      "threat_actor": "LockBit",
+      "campaign": "lockbit-3.0-healthcare"
+    },
+    {
+      "ioc_type": "ip",
+      "value_raw": "194.26.192.71",
+      "detected_by": [
+        "fortinet"
+      ],
+      "threat_actor": "LockBit",
+      "campaign": "lockbit-3.0-healthcare"
+    }
+  ],
+  "tools_in_scope": [
+    "sentinelone",
+    "fortinet",
+    "palo-alto"
+  ],
+  "source": "incident",
+  "notes": "LockBit 3.0 incident affecting EHR systems. C2 communication detected by Palo Alto.",
+  "context": {
+    "industry": "healthcare",
+    "org_size": "1000-5000"
+  }
+}

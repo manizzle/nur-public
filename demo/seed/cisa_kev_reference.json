@@ -1,0 +1,107 @@
+{
+  "source": "CISA Known Exploited Vulnerabilities",
+  "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+  "total_ransomware_cves": 312,
+  "recent_cves": [
+    {
+      "cve": "CVE-2026-1731",
+      "vendor": "BeyondTrust",
+      "description": "BeyondTrust Remote Support (RS) and Privileged Remote Access (PRA)contain an OS command injection vulnerability. Success"
+    },
+    {
+      "cve": "CVE-2026-24423",
+      "vendor": "SmarterTools",
+      "description": "SmarterTools SmarterMail contains a missing authentication for critical function vulnerability in the ConnectToHub API m"
+    },
+    {
+      "cve": "CVE-2026-23760",
+      "vendor": "SmarterTools",
+      "description": "SmarterTools SmarterMail contains an authentication bypass using an alternate path or channel vulnerability in the passw"
+    },
+    {
+      "cve": "CVE-2025-55182",
+      "vendor": "Meta",
+      "description": "Meta React Server Components contains a remote code execution vulnerability that could allow unauthenticated remote code"
+    },
+    {
+      "cve": "CVE-2025-61884",
+      "vendor": "Oracle",
+      "description": "Oracle E-Business Suite contains a server-side request forgery (SSRF) vulnerability in the Runtime component of Oracle C"
+    },
+    {
+      "cve": "CVE-2025-61882",
+      "vendor": "Oracle",
+      "description": "Oracle E-Business Suite contains an unspecified vulnerability in the BI Publisher Integration component. The vulnerabili"
+    },
+    {
+      "cve": "CVE-2025-10035",
+      "vendor": "Fortra",
+      "description": "Fortra GoAnywhere MFT contains a deserialization of untrusted data vulnerability allows an actor with a validly forged l"
+    },
+    {
+      "cve": "CVE-2025-49704",
+      "vendor": "Microsoft",
+      "description": "Microsoft SharePoint contains a code injection vulnerability that could allow an authorized attacker to execute code ove"
+    },
+    {
+      "cve": "CVE-2025-49706",
+      "vendor": "Microsoft",
+      "description": "Microsoft SharePoint contains an improper authentication vulnerability that allows an authorized attacker to perform spo"
+    },
+    {
+      "cve": "CVE-2025-53770",
+      "vendor": "Microsoft",
+      "description": "Microsoft SharePoint Server on-premises contains a deserialization of untrusted data vulnerability that could allow an u"
+    },
+    {
+      "cve": "CVE-2025-5777",
+      "vendor": "Citrix",
+      "description": "Citrix NetScaler ADC and Gateway contain an out-of-bounds read vulnerability due to insufficient input validation. This "
+    },
+    {
+      "cve": "CVE-2019-6693",
+      "vendor": "Fortinet",
+      "description": "Fortinet FortiOS contains a use of hard-coded credentials vulnerability that could allow an attacker to cipher sensitive"
+    },
+    {
+      "cve": "CVE-2025-31324",
+      "vendor": "SAP",
+      "description": "SAP NetWeaver Visual Composer Metadata Uploader contains an unrestricted file upload vulnerability that allows an unauth"
+    },
+    {
+      "cve": "CVE-2025-29824",
+      "vendor": "Microsoft",
+      "description": "Microsoft Windows Common Log File System (CLFS) Driver contains a use-after-free vulnerability that allows an authorized"
+    },
+    {
+      "cve": "CVE-2025-31161",
+      "vendor": "CrushFTP",
+      "description": "CrushFTP contains an authentication bypass vulnerability in the HTTP authorization header that allows a remote unauthent"
+    },
+    {
+      "cve": "CVE-2025-22457",
+      "vendor": "Ivanti",
+      "description": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways contains a stack-based buffer overflow vulnerability that allows "
+    },
+    {
+      "cve": "CVE-2025-24472",
+      "vendor": "Fortinet",
+      "description": " Fortinet FortiOS and FortiProxy contain an authentication bypass vulnerability that allows a remote attacker to gain su"
+    },
+    {
+      "cve": "CVE-2025-26633",
+      "vendor": "Microsoft",
+      "description": "Microsoft Windows Management Console (MMC) contains an improper neutralization vulnerability that allows an unauthorized"
+    },
+    {
+      "cve": "CVE-2025-22225",
+      "vendor": "VMware",
+      "description": "VMware ESXi contains an arbitrary write vulnerability. Successful exploitation allows an attacker with privileges within"
+    },
+    {
+      "cve": "CVE-2018-8639",
+      "vendor": "Microsoft",
+      "description": "Microsoft Windows Win32k contains an improper resource shutdown or release vulnerability that allows for local, authenti"
+    }
+  ]
+}

@@ -1,0 +1,1226 @@
+{
+  "crowdstrike": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Falcon telemetry and detection logs to Splunk", "co_deploy_pct": 0.52},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Falcon alerts forwarded to Sentinel", "co_deploy_pct": 0.31},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Falcon incidents trigger SOAR playbooks", "co_deploy_pct": 0.28},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "Falcon detections enrich XSOAR incidents", "co_deploy_pct": 0.22},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Falcon event logs ingested by Elastic", "co_deploy_pct": 0.14},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Endpoint coverage data for compliance evidence", "co_deploy_pct": 0.18},
+      {"vendor_id": "drata", "integration_type": "telemetry", "description": "EDR deployment status for compliance", "co_deploy_pct": 0.12}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity context enriches Falcon detections", "co_deploy_pct": 0.38},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Entra ID user context for identity threat detection", "co_deploy_pct": 0.34},
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel IOCs fed into Falcon for detection", "co_deploy_pct": 0.19},
+      {"vendor_id": "cyberark-pam", "integration_type": "identity", "description": "Privileged session context for endpoint correlation", "co_deploy_pct": 0.11}
+    ],
+    "competes_with": ["sentinelone", "ms-defender", "cortex-xdr", "sophos", "carbon-black", "bitdefender"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.52, "use_case": "EDR + SIEM logging and threat hunting"},
+      {"partner": "okta", "pct": 0.38, "use_case": "EDR + IAM identity threat detection"},
+      {"partner": "zscaler", "pct": 0.29, "use_case": "EDR + ZTNA endpoint-to-network security"},
+      {"partner": "proofpoint", "pct": 0.26, "use_case": "EDR + email security layered defense"},
+      {"partner": "wiz", "pct": 0.21, "use_case": "EDR + CNAPP endpoint and cloud coverage"}
+    ]
+  },
+  "sentinelone": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Singularity telemetry to Splunk", "co_deploy_pct": 0.34},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "S1 alerts forwarded to Sentinel", "co_deploy_pct": 0.22},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "S1 event data to Elastic SIEM", "co_deploy_pct": 0.16},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "S1 threats trigger SOAR automation", "co_deploy_pct": 0.18},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "S1 detections enrich XSOAR workflows", "co_deploy_pct": 0.15},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Endpoint coverage for compliance", "co_deploy_pct": 0.14}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta user context for identity-based detections", "co_deploy_pct": 0.28},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity enrichment", "co_deploy_pct": 0.24},
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel feeds for detection rules", "co_deploy_pct": 0.13}
+    ],
+    "competes_with": ["crowdstrike", "ms-defender", "cortex-xdr", "sophos", "carbon-black", "bitdefender"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.34, "use_case": "EDR + SIEM correlation"},
+      {"partner": "okta", "pct": 0.28, "use_case": "EDR + IAM identity protection"},
+      {"partner": "zscaler", "pct": 0.19, "use_case": "EDR + ZTNA zero-trust endpoint access"},
+      {"partner": "proofpoint", "pct": 0.18, "use_case": "EDR + email security defense in depth"}
+    ]
+  },
+  "ms-defender": {
+    "feeds_into": [
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Native Defender-to-Sentinel integration via M365 connector", "co_deploy_pct": 0.72},
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Defender alerts forwarded to Splunk", "co_deploy_pct": 0.18},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Defender incidents trigger SOAR response", "co_deploy_pct": 0.11},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Defender deployment for compliance evidence", "co_deploy_pct": 0.16},
+      {"vendor_id": "drata", "integration_type": "telemetry", "description": "Endpoint protection status for audits", "co_deploy_pct": 0.10}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Native Azure AD identity context", "co_deploy_pct": 0.72},
+      {"vendor_id": "ms-cloud-apps", "integration_type": "alerts", "description": "Cloud app alerts correlated with endpoint", "co_deploy_pct": 0.48},
+      {"vendor_id": "mandiant", "integration_type": "telemetry", "description": "Mandiant threat intel enrichment", "co_deploy_pct": 0.09}
+    ],
+    "competes_with": ["crowdstrike", "sentinelone", "cortex-xdr", "sophos", "carbon-black"],
+    "common_stack_pairs": [
+      {"partner": "ms-sentinel", "pct": 0.72, "use_case": "Native Microsoft EDR + SIEM stack"},
+      {"partner": "entra-id", "pct": 0.72, "use_case": "Microsoft identity + endpoint unified"},
+      {"partner": "ms-cloud-apps", "pct": 0.48, "use_case": "Microsoft endpoint + CASB"},
+      {"partner": "okta", "pct": 0.14, "use_case": "EDR + third-party IAM hybrid"}
+    ]
+  },
+  "cortex-xdr": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Cortex XDR telemetry to Splunk", "co_deploy_pct": 0.21},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "XDR alerts forwarded to Sentinel", "co_deploy_pct": 0.13},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "Native Cortex XDR to XSOAR integration", "co_deploy_pct": 0.58},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "XDR incidents to Splunk SOAR", "co_deploy_pct": 0.09},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Endpoint coverage for compliance", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Identity context for XDR analytics", "co_deploy_pct": 0.22},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user enrichment", "co_deploy_pct": 0.19},
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel IOCs for Cortex detections", "co_deploy_pct": 0.11}
+    ],
+    "competes_with": ["crowdstrike", "sentinelone", "ms-defender", "sophos", "carbon-black"],
+    "common_stack_pairs": [
+      {"partner": "xsoar", "pct": 0.58, "use_case": "Palo Alto native EDR + SOAR"},
+      {"partner": "prisma-cloud", "pct": 0.42, "use_case": "Palo Alto endpoint + cloud security"},
+      {"partner": "splunk", "pct": 0.21, "use_case": "XDR + SIEM for multi-source correlation"},
+      {"partner": "okta", "pct": 0.22, "use_case": "XDR + IAM identity-driven detection"}
+    ]
+  },
+  "sophos": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Sophos endpoint logs to Splunk", "co_deploy_pct": 0.18},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Sophos alerts to Sentinel via syslog", "co_deploy_pct": 0.12},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Sophos events to Elastic", "co_deploy_pct": 0.09},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Endpoint status for compliance", "co_deploy_pct": 0.07}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity for Sophos Central", "co_deploy_pct": 0.16},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity enrichment", "co_deploy_pct": 0.08}
+    ],
+    "competes_with": ["crowdstrike", "sentinelone", "ms-defender", "cortex-xdr", "bitdefender", "eset"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.18, "use_case": "EDR + SIEM mid-market stack"},
+      {"partner": "mimecast", "pct": 0.14, "use_case": "EDR + email security SMB bundle"},
+      {"partner": "cisco-duo", "pct": 0.11, "use_case": "EDR + MFA layered access"}
+    ]
+  },
+  "bitdefender": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Bitdefender GravityZone logs to Splunk", "co_deploy_pct": 0.12},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "GravityZone alerts to Sentinel", "co_deploy_pct": 0.08},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Bitdefender events to Elastic", "co_deploy_pct": 0.07},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "AV/EDR coverage for compliance", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD integration for user context", "co_deploy_pct": 0.10}
+    ],
+    "competes_with": ["crowdstrike", "sentinelone", "ms-defender", "sophos", "eset", "kaspersky", "malwarebytes"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.12, "use_case": "EDR + SIEM log management"},
+      {"partner": "entra-id", "pct": 0.10, "use_case": "EDR + IAM identity context"}
+    ]
+  },
+  "carbon-black": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Carbon Black Cloud events to Splunk", "co_deploy_pct": 0.26},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "CB alerts forwarded to Sentinel", "co_deploy_pct": 0.14},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "CB incidents trigger SOAR playbooks", "co_deploy_pct": 0.16},
+      {"vendor_id": "qradar", "integration_type": "logs", "description": "Carbon Black logs to QRadar", "co_deploy_pct": 0.11},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Endpoint protection compliance data", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity for CB Cloud analytics", "co_deploy_pct": 0.18},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user context", "co_deploy_pct": 0.15},
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel feeds for watchlists", "co_deploy_pct": 0.10}
+    ],
+    "competes_with": ["crowdstrike", "sentinelone", "ms-defender", "cortex-xdr", "sophos"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.26, "use_case": "VMware CB + Splunk SIEM"},
+      {"partner": "okta", "pct": 0.18, "use_case": "EDR + IAM identity correlation"},
+      {"partner": "proofpoint", "pct": 0.14, "use_case": "EDR + email threat layered defense"}
+    ]
+  },
+  "eset": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "ESET PROTECT logs to Splunk via syslog", "co_deploy_pct": 0.09},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "ESET detections to Sentinel", "co_deploy_pct": 0.06},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "ESET events to Elastic", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user context", "co_deploy_pct": 0.07}
+    ],
+    "competes_with": ["sophos", "bitdefender", "kaspersky", "malwarebytes", "trend-apex"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.09, "use_case": "EDR + SIEM for SMB"},
+      {"partner": "cisco-duo", "pct": 0.06, "use_case": "EDR + MFA SMB security"}
+    ]
+  },
+  "kaspersky": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Kaspersky endpoint logs to Splunk", "co_deploy_pct": 0.08},
+      {"vendor_id": "qradar", "integration_type": "logs", "description": "Kaspersky logs to QRadar via syslog", "co_deploy_pct": 0.06},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Kaspersky events to Elastic", "co_deploy_pct": 0.04}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD integration", "co_deploy_pct": 0.05}
+    ],
+    "competes_with": ["bitdefender", "eset", "sophos", "malwarebytes", "trend-apex"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.08, "use_case": "EDR + SIEM logging"},
+      {"partner": "qradar", "pct": 0.06, "use_case": "EDR + SIEM enterprise legacy"}
+    ]
+  },
+  "malwarebytes": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Malwarebytes detection logs to Splunk", "co_deploy_pct": 0.07},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Malwarebytes alerts to Sentinel", "co_deploy_pct": 0.05},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Endpoint protection compliance", "co_deploy_pct": 0.06}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user mapping", "co_deploy_pct": 0.05}
+    ],
+    "competes_with": ["bitdefender", "eset", "kaspersky", "sophos"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.07, "use_case": "AV/EDR + SIEM SMB stack"},
+      {"partner": "vanta", "pct": 0.06, "use_case": "Endpoint protection + compliance"}
+    ]
+  },
+  "trend-apex": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Trend Vision One logs to Splunk", "co_deploy_pct": 0.16},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Trend alerts to Sentinel", "co_deploy_pct": 0.10},
+      {"vendor_id": "qradar", "integration_type": "logs", "description": "Trend logs to QRadar", "co_deploy_pct": 0.09},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Trend incidents to SOAR", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity context", "co_deploy_pct": 0.12},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity enrichment", "co_deploy_pct": 0.08}
+    ],
+    "competes_with": ["crowdstrike", "sentinelone", "ms-defender", "sophos", "cortex-xdr"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.16, "use_case": "EDR + SIEM enterprise logging"},
+      {"partner": "qradar", "pct": 0.09, "use_case": "EDR + SIEM legacy enterprise"},
+      {"partner": "proofpoint", "pct": 0.11, "use_case": "EDR + email layered defense"}
+    ]
+  },
+
+  "splunk": {
+    "feeds_into": [
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "Splunk notable events trigger SOAR playbooks", "co_deploy_pct": 0.48},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Log monitoring evidence for compliance", "co_deploy_pct": 0.14},
+      {"vendor_id": "drata", "integration_type": "telemetry", "description": "SIEM coverage evidence for audits", "co_deploy_pct": 0.09}
+    ],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "logs", "description": "Falcon telemetry ingestion", "co_deploy_pct": 0.52},
+      {"vendor_id": "okta", "integration_type": "logs", "description": "Okta auth/access logs", "co_deploy_pct": 0.41},
+      {"vendor_id": "proofpoint", "integration_type": "logs", "description": "Email threat logs", "co_deploy_pct": 0.28},
+      {"vendor_id": "darktrace", "integration_type": "alerts", "description": "NDR anomaly alerts", "co_deploy_pct": 0.14},
+      {"vendor_id": "wiz", "integration_type": "alerts", "description": "Cloud security findings", "co_deploy_pct": 0.18},
+      {"vendor_id": "tenable", "integration_type": "telemetry", "description": "Vulnerability scan results", "co_deploy_pct": 0.32},
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel enrichment", "co_deploy_pct": 0.24},
+      {"vendor_id": "cyberark-pam", "integration_type": "logs", "description": "Privileged session audit logs", "co_deploy_pct": 0.19}
+    ],
+    "competes_with": ["ms-sentinel", "qradar", "elastic-siem", "exabeam", "logrhythm", "sumo-logic"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.52, "use_case": "SIEM + EDR industry-leading pair"},
+      {"partner": "okta", "pct": 0.41, "use_case": "SIEM + IAM identity monitoring"},
+      {"partner": "tenable", "pct": 0.32, "use_case": "SIEM + VM vulnerability correlation"},
+      {"partner": "splunk-soar", "pct": 0.48, "use_case": "Native SIEM + SOAR automation"},
+      {"partner": "proofpoint", "pct": 0.28, "use_case": "SIEM + email threat correlation"}
+    ]
+  },
+  "ms-sentinel": {
+    "feeds_into": [
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "SIEM monitoring for compliance evidence", "co_deploy_pct": 0.12},
+      {"vendor_id": "drata", "integration_type": "telemetry", "description": "Log monitoring compliance data", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "ms-defender", "integration_type": "logs", "description": "Native Defender log connector", "co_deploy_pct": 0.72},
+      {"vendor_id": "entra-id", "integration_type": "logs", "description": "Native Azure AD sign-in and audit logs", "co_deploy_pct": 0.74},
+      {"vendor_id": "ms-cloud-apps", "integration_type": "alerts", "description": "Native MCAS alerts connector", "co_deploy_pct": 0.52},
+      {"vendor_id": "crowdstrike", "integration_type": "alerts", "description": "Falcon alerts via data connector", "co_deploy_pct": 0.31},
+      {"vendor_id": "okta", "integration_type": "logs", "description": "Okta SSO logs via connector", "co_deploy_pct": 0.22},
+      {"vendor_id": "wiz", "integration_type": "alerts", "description": "Cloud security findings", "co_deploy_pct": 0.16},
+      {"vendor_id": "qualys", "integration_type": "telemetry", "description": "Vulnerability data connector", "co_deploy_pct": 0.18},
+      {"vendor_id": "darktrace", "integration_type": "alerts", "description": "NDR alerts forwarded to Sentinel", "co_deploy_pct": 0.09}
+    ],
+    "competes_with": ["splunk", "qradar", "elastic-siem", "exabeam", "logrhythm", "sumo-logic"],
+    "common_stack_pairs": [
+      {"partner": "ms-defender", "pct": 0.72, "use_case": "Native Microsoft SIEM + EDR"},
+      {"partner": "entra-id", "pct": 0.74, "use_case": "Native Microsoft SIEM + IAM"},
+      {"partner": "ms-cloud-apps", "pct": 0.52, "use_case": "Microsoft SIEM + CASB"},
+      {"partner": "crowdstrike", "pct": 0.31, "use_case": "SIEM + third-party EDR hybrid"},
+      {"partner": "okta", "pct": 0.22, "use_case": "SIEM + IAM cross-platform identity"}
+    ]
+  },
+  "qradar": {
+    "feeds_into": [
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "SIEM monitoring compliance data", "co_deploy_pct": 0.06},
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "QRadar offenses trigger SOAR playbooks", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "carbon-black", "integration_type": "logs", "description": "CB endpoint logs to QRadar", "co_deploy_pct": 0.11},
+      {"vendor_id": "crowdstrike", "integration_type": "logs", "description": "Falcon logs via DSM", "co_deploy_pct": 0.14},
+      {"vendor_id": "trend-apex", "integration_type": "logs", "description": "Trend endpoint logs", "co_deploy_pct": 0.09},
+      {"vendor_id": "cyberark-pam", "integration_type": "logs", "description": "PAM session logs", "co_deploy_pct": 0.12},
+      {"vendor_id": "tenable", "integration_type": "telemetry", "description": "Vulnerability scan data", "co_deploy_pct": 0.18}
+    ],
+    "competes_with": ["splunk", "ms-sentinel", "elastic-siem", "exabeam", "logrhythm", "sumo-logic"],
+    "common_stack_pairs": [
+      {"partner": "cyberark-pam", "pct": 0.12, "use_case": "SIEM + PAM legacy enterprise"},
+      {"partner": "tenable", "pct": 0.18, "use_case": "SIEM + VM vulnerability management"},
+      {"partner": "carbon-black", "pct": 0.11, "use_case": "SIEM + EDR enterprise legacy"}
+    ]
+  },
+  "elastic-siem": {
+    "feeds_into": [
+      {"vendor_id": "tines", "integration_type": "alerts", "description": "Elastic alerts trigger Tines workflows", "co_deploy_pct": 0.11},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Log monitoring evidence", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "logs", "description": "Falcon events via Elastic Agent", "co_deploy_pct": 0.14},
+      {"vendor_id": "sentinelone", "integration_type": "logs", "description": "S1 events to Elastic", "co_deploy_pct": 0.16},
+      {"vendor_id": "okta", "integration_type": "logs", "description": "Okta auth logs via integration", "co_deploy_pct": 0.15},
+      {"vendor_id": "wiz", "integration_type": "alerts", "description": "Cloud findings to Elastic", "co_deploy_pct": 0.09},
+      {"vendor_id": "corelight", "integration_type": "logs", "description": "Zeek network logs to Elastic", "co_deploy_pct": 0.12}
+    ],
+    "competes_with": ["splunk", "ms-sentinel", "qradar", "exabeam", "logrhythm", "sumo-logic"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.14, "use_case": "Open-source SIEM + EDR"},
+      {"partner": "corelight", "pct": 0.12, "use_case": "Elastic + Zeek network visibility"},
+      {"partner": "okta", "pct": 0.15, "use_case": "SIEM + IAM identity logs"},
+      {"partner": "tines", "pct": 0.11, "use_case": "SIEM + SOAR automation"}
+    ]
+  },
+  "exabeam": {
+    "feeds_into": [
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "Exabeam alerts to SOAR", "co_deploy_pct": 0.07},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "SIEM compliance evidence", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "logs", "description": "Falcon logs for UEBA analytics", "co_deploy_pct": 0.12},
+      {"vendor_id": "okta", "integration_type": "logs", "description": "Okta logs for behavioral analytics", "co_deploy_pct": 0.14},
+      {"vendor_id": "cyberark-pam", "integration_type": "logs", "description": "Privileged access logs for UEBA", "co_deploy_pct": 0.08}
+    ],
+    "competes_with": ["splunk", "ms-sentinel", "qradar", "elastic-siem", "logrhythm", "sumo-logic"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.12, "use_case": "UEBA SIEM + EDR analytics"},
+      {"partner": "okta", "pct": 0.14, "use_case": "UEBA + IAM behavioral analysis"},
+      {"partner": "cyberark-pam", "pct": 0.08, "use_case": "UEBA + PAM insider threat"}
+    ]
+  },
+  "logrhythm": {
+    "feeds_into": [
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "SIEM compliance monitoring", "co_deploy_pct": 0.04}
+    ],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "logs", "description": "Falcon logs ingestion", "co_deploy_pct": 0.08},
+      {"vendor_id": "tenable", "integration_type": "telemetry", "description": "Vulnerability data", "co_deploy_pct": 0.10},
+      {"vendor_id": "okta", "integration_type": "logs", "description": "Identity logs", "co_deploy_pct": 0.07}
+    ],
+    "competes_with": ["splunk", "ms-sentinel", "qradar", "elastic-siem", "exabeam", "sumo-logic"],
+    "common_stack_pairs": [
+      {"partner": "tenable", "pct": 0.10, "use_case": "SIEM + VM mid-market"},
+      {"partner": "crowdstrike", "pct": 0.08, "use_case": "SIEM + EDR mid-market"}
+    ]
+  },
+  "sumo-logic": {
+    "feeds_into": [
+      {"vendor_id": "tines", "integration_type": "alerts", "description": "Sumo alerts trigger Tines workflows", "co_deploy_pct": 0.06},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Cloud SIEM compliance data", "co_deploy_pct": 0.07}
+    ],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "logs", "description": "Falcon telemetry to Sumo", "co_deploy_pct": 0.08},
+      {"vendor_id": "okta", "integration_type": "logs", "description": "Okta auth logs", "co_deploy_pct": 0.10},
+      {"vendor_id": "wiz", "integration_type": "alerts", "description": "Cloud security findings", "co_deploy_pct": 0.07}
+    ],
+    "competes_with": ["splunk", "ms-sentinel", "elastic-siem", "exabeam", "logrhythm"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.08, "use_case": "Cloud SIEM + EDR"},
+      {"partner": "okta", "pct": 0.10, "use_case": "Cloud SIEM + IAM"},
+      {"partner": "wiz", "pct": 0.07, "use_case": "Cloud SIEM + CNAPP cloud-native"}
+    ]
+  },
+
+  "wiz": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Wiz cloud findings to Splunk", "co_deploy_pct": 0.32},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Wiz issues forwarded to Sentinel", "co_deploy_pct": 0.28},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "Wiz critical findings trigger XSOAR", "co_deploy_pct": 0.16},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Wiz issues trigger SOAR remediation", "co_deploy_pct": 0.14},
+      {"vendor_id": "tines", "integration_type": "incidents", "description": "Wiz findings trigger Tines workflows", "co_deploy_pct": 0.12},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Cloud security posture for compliance", "co_deploy_pct": 0.22},
+      {"vendor_id": "drata", "integration_type": "telemetry", "description": "Cloud compliance evidence", "co_deploy_pct": 0.16}
+    ],
+    "feeds_from": [
+      {"vendor_id": "snyk", "integration_type": "telemetry", "description": "Code vulnerability context for cloud findings", "co_deploy_pct": 0.24},
+      {"vendor_id": "hashicorp-vault", "integration_type": "secrets", "description": "Secrets scanning context", "co_deploy_pct": 0.14}
+    ],
+    "competes_with": ["snyk", "prisma-cloud", "sysdig", "aqua"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.34, "use_case": "CNAPP + EDR cloud and endpoint"},
+      {"partner": "splunk", "pct": 0.32, "use_case": "CNAPP + SIEM cloud findings correlation"},
+      {"partner": "snyk", "pct": 0.24, "use_case": "CNAPP + SCA code-to-cloud"},
+      {"partner": "okta", "pct": 0.21, "use_case": "CNAPP + IAM cloud identity"}
+    ]
+  },
+  "snyk": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Snyk vulnerability findings to Splunk", "co_deploy_pct": 0.14},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Snyk findings to Sentinel", "co_deploy_pct": 0.09},
+      {"vendor_id": "wiz", "integration_type": "telemetry", "description": "Code vulnerabilities enrich Wiz cloud context", "co_deploy_pct": 0.24},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Code security posture for compliance", "co_deploy_pct": 0.16},
+      {"vendor_id": "drata", "integration_type": "telemetry", "description": "AppSec compliance evidence", "co_deploy_pct": 0.12}
+    ],
+    "feeds_from": [
+      {"vendor_id": "hashicorp-vault", "integration_type": "secrets", "description": "Secrets detection context", "co_deploy_pct": 0.11}
+    ],
+    "competes_with": ["wiz", "prisma-cloud", "sysdig", "aqua"],
+    "common_stack_pairs": [
+      {"partner": "wiz", "pct": 0.24, "use_case": "SCA + CNAPP code-to-cloud security"},
+      {"partner": "crowdstrike", "pct": 0.16, "use_case": "AppSec + EDR full-stack protection"},
+      {"partner": "splunk", "pct": 0.14, "use_case": "AppSec + SIEM vulnerability tracking"},
+      {"partner": "hashicorp-vault", "pct": 0.11, "use_case": "AppSec + secrets management"}
+    ]
+  },
+  "prisma-cloud": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Prisma Cloud alerts to Splunk", "co_deploy_pct": 0.18},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "Native Palo Alto CNAPP to SOAR", "co_deploy_pct": 0.42},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Cloud alerts to Sentinel", "co_deploy_pct": 0.11},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Cloud posture compliance data", "co_deploy_pct": 0.09}
+    ],
+    "feeds_from": [
+      {"vendor_id": "hashicorp-vault", "integration_type": "secrets", "description": "Secrets management integration", "co_deploy_pct": 0.12}
+    ],
+    "competes_with": ["wiz", "snyk", "sysdig", "aqua"],
+    "common_stack_pairs": [
+      {"partner": "cortex-xdr", "pct": 0.42, "use_case": "Palo Alto CNAPP + EDR native stack"},
+      {"partner": "xsoar", "pct": 0.42, "use_case": "Palo Alto CNAPP + SOAR native stack"},
+      {"partner": "splunk", "pct": 0.18, "use_case": "CNAPP + SIEM alerting"}
+    ]
+  },
+  "sysdig": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Sysdig runtime alerts to Splunk", "co_deploy_pct": 0.12},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Sysdig alerts to Sentinel", "co_deploy_pct": 0.07},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Sysdig events to Elastic", "co_deploy_pct": 0.08},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Container security compliance", "co_deploy_pct": 0.06}
+    ],
+    "feeds_from": [
+      {"vendor_id": "hashicorp-vault", "integration_type": "secrets", "description": "Secrets scanning context", "co_deploy_pct": 0.08}
+    ],
+    "competes_with": ["wiz", "snyk", "prisma-cloud", "aqua"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.12, "use_case": "Runtime CNAPP + SIEM"},
+      {"partner": "elastic-siem", "pct": 0.08, "use_case": "Container security + open SIEM"},
+      {"partner": "crowdstrike", "pct": 0.10, "use_case": "CNAPP + EDR container and host"}
+    ]
+  },
+  "aqua": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Aqua runtime alerts to Splunk", "co_deploy_pct": 0.09},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Aqua findings to Sentinel", "co_deploy_pct": 0.06},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Aqua events to Elastic", "co_deploy_pct": 0.05},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Container compliance data", "co_deploy_pct": 0.04}
+    ],
+    "feeds_from": [
+      {"vendor_id": "hashicorp-vault", "integration_type": "secrets", "description": "Secrets management integration", "co_deploy_pct": 0.06}
+    ],
+    "competes_with": ["wiz", "snyk", "prisma-cloud", "sysdig"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.09, "use_case": "Container CNAPP + SIEM"},
+      {"partner": "elastic-siem", "pct": 0.05, "use_case": "Container security + open SIEM"}
+    ]
+  },
+
+  "vanta": {
+    "feeds_into": [],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "EDR coverage evidence", "co_deploy_pct": 0.18},
+      {"vendor_id": "ms-defender", "integration_type": "telemetry", "description": "Endpoint protection evidence", "co_deploy_pct": 0.16},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "IAM policy and access evidence", "co_deploy_pct": 0.32},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD access controls evidence", "co_deploy_pct": 0.22},
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "SIEM monitoring evidence", "co_deploy_pct": 0.14},
+      {"vendor_id": "wiz", "integration_type": "telemetry", "description": "Cloud security posture evidence", "co_deploy_pct": 0.22},
+      {"vendor_id": "snyk", "integration_type": "telemetry", "description": "AppSec scanning evidence", "co_deploy_pct": 0.16},
+      {"vendor_id": "cloudflare-waf", "integration_type": "telemetry", "description": "WAF protection evidence", "co_deploy_pct": 0.12}
+    ],
+    "competes_with": ["drata"],
+    "common_stack_pairs": [
+      {"partner": "okta", "pct": 0.32, "use_case": "GRC + IAM compliance automation"},
+      {"partner": "wiz", "pct": 0.22, "use_case": "GRC + CNAPP cloud compliance"},
+      {"partner": "crowdstrike", "pct": 0.18, "use_case": "GRC + EDR endpoint compliance"},
+      {"partner": "snyk", "pct": 0.16, "use_case": "GRC + AppSec code compliance"}
+    ]
+  },
+  "drata": {
+    "feeds_into": [],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "EDR compliance evidence", "co_deploy_pct": 0.12},
+      {"vendor_id": "ms-defender", "integration_type": "telemetry", "description": "Endpoint protection evidence", "co_deploy_pct": 0.10},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "IAM access evidence", "co_deploy_pct": 0.26},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD compliance data", "co_deploy_pct": 0.18},
+      {"vendor_id": "wiz", "integration_type": "telemetry", "description": "Cloud security evidence", "co_deploy_pct": 0.16},
+      {"vendor_id": "snyk", "integration_type": "telemetry", "description": "AppSec compliance evidence", "co_deploy_pct": 0.12},
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "SIEM monitoring evidence", "co_deploy_pct": 0.09}
+    ],
+    "competes_with": ["vanta"],
+    "common_stack_pairs": [
+      {"partner": "okta", "pct": 0.26, "use_case": "GRC + IAM compliance automation"},
+      {"partner": "wiz", "pct": 0.16, "use_case": "GRC + CNAPP cloud compliance"},
+      {"partner": "crowdstrike", "pct": 0.12, "use_case": "GRC + EDR compliance evidence"}
+    ]
+  },
+
+  "proofpoint": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Email threat logs and TAP events to Splunk", "co_deploy_pct": 0.38},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Email threat alerts to Sentinel", "co_deploy_pct": 0.18},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Email incidents trigger SOAR playbooks", "co_deploy_pct": 0.22},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "TAP alerts enrich XSOAR workflows", "co_deploy_pct": 0.16},
+      {"vendor_id": "crowdstrike", "integration_type": "alerts", "description": "Targeted attack intel shared with Falcon", "co_deploy_pct": 0.26},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Email security compliance evidence", "co_deploy_pct": 0.10}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "User identity context for targeted attack protection", "co_deploy_pct": 0.24},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user context", "co_deploy_pct": 0.28},
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel for email detection", "co_deploy_pct": 0.14}
+    ],
+    "competes_with": ["mimecast", "abnormal"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.38, "use_case": "Email security + SIEM correlation"},
+      {"partner": "crowdstrike", "pct": 0.26, "use_case": "Email + EDR threat chain defense"},
+      {"partner": "okta", "pct": 0.24, "use_case": "Email + IAM identity-aware protection"},
+      {"partner": "splunk-soar", "pct": 0.22, "use_case": "Email + SOAR automated response"}
+    ]
+  },
+  "mimecast": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Email security logs to Splunk", "co_deploy_pct": 0.24},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Email alerts to Sentinel", "co_deploy_pct": 0.14},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Email incidents to SOAR", "co_deploy_pct": 0.12},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "Email threat incidents to XSOAR", "co_deploy_pct": 0.10},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Email protection compliance", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "User identity for targeted protection", "co_deploy_pct": 0.16},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user context", "co_deploy_pct": 0.22}
+    ],
+    "competes_with": ["proofpoint", "abnormal"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.24, "use_case": "Email + SIEM threat correlation"},
+      {"partner": "crowdstrike", "pct": 0.18, "use_case": "Email + EDR defense in depth"},
+      {"partner": "sophos", "pct": 0.14, "use_case": "Email + EDR mid-market bundle"}
+    ]
+  },
+  "abnormal": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Abnormal BEC detections to Splunk", "co_deploy_pct": 0.18},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Email anomaly alerts to Sentinel", "co_deploy_pct": 0.22},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "BEC incidents trigger SOAR", "co_deploy_pct": 0.11},
+      {"vendor_id": "tines", "integration_type": "incidents", "description": "Email threats trigger Tines workflows", "co_deploy_pct": 0.09}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Identity context for behavioral detection", "co_deploy_pct": 0.21},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD context for email analysis", "co_deploy_pct": 0.32}
+    ],
+    "competes_with": ["proofpoint", "mimecast"],
+    "common_stack_pairs": [
+      {"partner": "ms-sentinel", "pct": 0.22, "use_case": "AI email + cloud SIEM Microsoft-adjacent"},
+      {"partner": "crowdstrike", "pct": 0.19, "use_case": "AI email + EDR modern stack"},
+      {"partner": "okta", "pct": 0.21, "use_case": "AI email + IAM identity context"}
+    ]
+  },
+
+  "cyberark-pam": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Privileged session audit logs to Splunk", "co_deploy_pct": 0.38},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "PAM audit logs to Sentinel", "co_deploy_pct": 0.22},
+      {"vendor_id": "qradar", "integration_type": "logs", "description": "Privileged access logs to QRadar", "co_deploy_pct": 0.12},
+      {"vendor_id": "crowdstrike", "integration_type": "identity", "description": "Privileged identity context for endpoint detection", "co_deploy_pct": 0.16},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Privileged access incidents trigger SOAR", "co_deploy_pct": 0.14},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "PAM compliance evidence", "co_deploy_pct": 0.12}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta SSO for PAM vault access", "co_deploy_pct": 0.28},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity for vault authentication", "co_deploy_pct": 0.32},
+      {"vendor_id": "sailpoint", "integration_type": "identity", "description": "IGA provisioning for privileged accounts", "co_deploy_pct": 0.18}
+    ],
+    "competes_with": ["beyondtrust", "delinea", "hashicorp-vault"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.38, "use_case": "PAM + SIEM privileged access monitoring"},
+      {"partner": "okta", "pct": 0.28, "use_case": "PAM + IAM unified identity"},
+      {"partner": "sailpoint", "pct": 0.18, "use_case": "PAM + IGA identity lifecycle"},
+      {"partner": "crowdstrike", "pct": 0.16, "use_case": "PAM + EDR privileged endpoint"}
+    ]
+  },
+  "beyondtrust": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Privileged session logs to Splunk", "co_deploy_pct": 0.22},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "PAM audit logs to Sentinel", "co_deploy_pct": 0.14},
+      {"vendor_id": "qradar", "integration_type": "logs", "description": "Session logs to QRadar", "co_deploy_pct": 0.08},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "PAM compliance evidence", "co_deploy_pct": 0.07}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "SSO for privileged access", "co_deploy_pct": 0.18},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity integration", "co_deploy_pct": 0.22},
+      {"vendor_id": "sailpoint", "integration_type": "identity", "description": "IGA provisioning for privileged accounts", "co_deploy_pct": 0.11}
+    ],
+    "competes_with": ["cyberark-pam", "delinea", "hashicorp-vault"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.22, "use_case": "PAM + SIEM session monitoring"},
+      {"partner": "okta", "pct": 0.18, "use_case": "PAM + IAM access control"},
+      {"partner": "entra-id", "pct": 0.22, "use_case": "PAM + Microsoft identity"}
+    ]
+  },
+  "hashicorp-vault": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Vault audit logs to Splunk", "co_deploy_pct": 0.26},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Vault access logs to Sentinel", "co_deploy_pct": 0.14},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Vault audit trail to Elastic", "co_deploy_pct": 0.12},
+      {"vendor_id": "wiz", "integration_type": "secrets", "description": "Secrets metadata for cloud posture", "co_deploy_pct": 0.14},
+      {"vendor_id": "snyk", "integration_type": "secrets", "description": "Secrets context for code scanning", "co_deploy_pct": 0.11}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta OIDC auth for Vault access", "co_deploy_pct": 0.22},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD auth method for Vault", "co_deploy_pct": 0.18}
+    ],
+    "competes_with": ["cyberark-pam", "beyondtrust", "delinea"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.26, "use_case": "Secrets + SIEM audit logging"},
+      {"partner": "wiz", "pct": 0.14, "use_case": "Secrets + CNAPP cloud security"},
+      {"partner": "okta", "pct": 0.22, "use_case": "Secrets + IAM identity-based access"},
+      {"partner": "snyk", "pct": 0.11, "use_case": "Secrets + AppSec code security"}
+    ]
+  },
+  "delinea": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Secret Server audit logs to Splunk", "co_deploy_pct": 0.16},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "PAM logs to Sentinel", "co_deploy_pct": 0.10},
+      {"vendor_id": "qradar", "integration_type": "logs", "description": "Privileged access logs to QRadar", "co_deploy_pct": 0.07},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "PAM compliance evidence", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "SSO integration for vault access", "co_deploy_pct": 0.14},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD authentication", "co_deploy_pct": 0.16}
+    ],
+    "competes_with": ["cyberark-pam", "beyondtrust", "hashicorp-vault"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.16, "use_case": "PAM + SIEM audit trail"},
+      {"partner": "okta", "pct": 0.14, "use_case": "PAM + IAM identity management"}
+    ]
+  },
+
+  "okta": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Okta system/auth logs to Splunk", "co_deploy_pct": 0.41},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Okta logs to Sentinel via connector", "co_deploy_pct": 0.22},
+      {"vendor_id": "crowdstrike", "integration_type": "identity", "description": "Identity context for Falcon detections", "co_deploy_pct": 0.38},
+      {"vendor_id": "sentinelone", "integration_type": "identity", "description": "User identity for S1 analytics", "co_deploy_pct": 0.28},
+      {"vendor_id": "zscaler", "integration_type": "identity", "description": "Identity for ZPA/ZIA access policies", "co_deploy_pct": 0.34},
+      {"vendor_id": "cyberark-pam", "integration_type": "identity", "description": "SSO for CyberArk vault access", "co_deploy_pct": 0.28},
+      {"vendor_id": "vanta", "integration_type": "identity", "description": "IAM policy evidence for compliance", "co_deploy_pct": 0.32},
+      {"vendor_id": "drata", "integration_type": "identity", "description": "Access controls for compliance", "co_deploy_pct": 0.26},
+      {"vendor_id": "proofpoint", "integration_type": "identity", "description": "User context for targeted attack protection", "co_deploy_pct": 0.24}
+    ],
+    "feeds_from": [
+      {"vendor_id": "sailpoint", "integration_type": "identity", "description": "SailPoint provisions/deprovisions Okta accounts", "co_deploy_pct": 0.18},
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Compromised credential intel", "co_deploy_pct": 0.08}
+    ],
+    "competes_with": ["entra-id", "ping-identity"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.41, "use_case": "IAM + SIEM identity monitoring"},
+      {"partner": "crowdstrike", "pct": 0.38, "use_case": "IAM + EDR identity threat detection"},
+      {"partner": "zscaler", "pct": 0.34, "use_case": "IAM + ZTNA identity-driven access"},
+      {"partner": "vanta", "pct": 0.32, "use_case": "IAM + GRC compliance automation"},
+      {"partner": "cyberark-pam", "pct": 0.28, "use_case": "IAM + PAM unified identity"}
+    ]
+  },
+  "entra-id": {
+    "feeds_into": [
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Native Azure AD sign-in and audit logs", "co_deploy_pct": 0.74},
+      {"vendor_id": "ms-defender", "integration_type": "identity", "description": "Native identity context for Defender", "co_deploy_pct": 0.72},
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Azure AD logs forwarded to Splunk", "co_deploy_pct": 0.22},
+      {"vendor_id": "crowdstrike", "integration_type": "identity", "description": "Azure AD identity for Falcon", "co_deploy_pct": 0.34},
+      {"vendor_id": "zscaler", "integration_type": "identity", "description": "Identity for Zscaler access policies", "co_deploy_pct": 0.28},
+      {"vendor_id": "cyberark-pam", "integration_type": "identity", "description": "Azure AD auth for CyberArk vault", "co_deploy_pct": 0.32},
+      {"vendor_id": "vanta", "integration_type": "identity", "description": "Azure AD compliance evidence", "co_deploy_pct": 0.22},
+      {"vendor_id": "proofpoint", "integration_type": "identity", "description": "User context for email protection", "co_deploy_pct": 0.28}
+    ],
+    "feeds_from": [
+      {"vendor_id": "sailpoint", "integration_type": "identity", "description": "SailPoint governs Azure AD lifecycle", "co_deploy_pct": 0.14}
+    ],
+    "competes_with": ["okta", "ping-identity"],
+    "common_stack_pairs": [
+      {"partner": "ms-sentinel", "pct": 0.74, "use_case": "Native Microsoft IAM + SIEM"},
+      {"partner": "ms-defender", "pct": 0.72, "use_case": "Native Microsoft IAM + EDR"},
+      {"partner": "ms-cloud-apps", "pct": 0.56, "use_case": "Native Microsoft IAM + CASB"},
+      {"partner": "crowdstrike", "pct": 0.34, "use_case": "IAM + third-party EDR"}
+    ]
+  },
+  "sailpoint": {
+    "feeds_into": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "IGA provisioning to Okta", "co_deploy_pct": 0.18},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "IGA lifecycle management for Azure AD", "co_deploy_pct": 0.14},
+      {"vendor_id": "cyberark-pam", "integration_type": "identity", "description": "IGA-governed privileged access", "co_deploy_pct": 0.18},
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Governance audit logs to Splunk", "co_deploy_pct": 0.16},
+      {"vendor_id": "vanta", "integration_type": "identity", "description": "Access governance compliance evidence", "co_deploy_pct": 0.09}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta as identity source for governance", "co_deploy_pct": 0.18},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD as identity source", "co_deploy_pct": 0.14}
+    ],
+    "competes_with": ["ping-identity"],
+    "common_stack_pairs": [
+      {"partner": "okta", "pct": 0.18, "use_case": "IGA + IAM identity lifecycle"},
+      {"partner": "cyberark-pam", "pct": 0.18, "use_case": "IGA + PAM governed privileged access"},
+      {"partner": "splunk", "pct": 0.16, "use_case": "IGA + SIEM governance monitoring"}
+    ]
+  },
+  "ping-identity": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "PingFederate auth logs to Splunk", "co_deploy_pct": 0.14},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Ping auth logs to Sentinel", "co_deploy_pct": 0.07},
+      {"vendor_id": "crowdstrike", "integration_type": "identity", "description": "Identity context for Falcon", "co_deploy_pct": 0.09},
+      {"vendor_id": "vanta", "integration_type": "identity", "description": "IAM compliance evidence", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "sailpoint", "integration_type": "identity", "description": "SailPoint governs Ping accounts", "co_deploy_pct": 0.08}
+    ],
+    "competes_with": ["okta", "entra-id"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.14, "use_case": "IAM + SIEM identity logging"},
+      {"partner": "cyberark-pam", "pct": 0.10, "use_case": "IAM + PAM enterprise identity"}
+    ]
+  },
+
+  "cisco-duo": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Duo auth/access logs to Splunk", "co_deploy_pct": 0.28},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Duo logs to Sentinel", "co_deploy_pct": 0.14},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "MFA compliance evidence", "co_deploy_pct": 0.16},
+      {"vendor_id": "drata", "integration_type": "telemetry", "description": "MFA deployment compliance", "co_deploy_pct": 0.11}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta as identity provider for Duo", "co_deploy_pct": 0.18},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD as identity source", "co_deploy_pct": 0.24}
+    ],
+    "competes_with": ["zscaler", "cloudflare-zt", "netskope"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.28, "use_case": "ZTNA/MFA + SIEM access monitoring"},
+      {"partner": "crowdstrike", "pct": 0.19, "use_case": "ZTNA + EDR endpoint trust"},
+      {"partner": "okta", "pct": 0.18, "use_case": "MFA + IAM identity layered"},
+      {"partner": "vanta", "pct": 0.16, "use_case": "MFA + GRC compliance evidence"}
+    ]
+  },
+  "zscaler": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "ZIA/ZPA access logs to Splunk", "co_deploy_pct": 0.36},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Zscaler logs to Sentinel", "co_deploy_pct": 0.22},
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "Zscaler alerts trigger SOAR", "co_deploy_pct": 0.12},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Network context for endpoint decisions", "co_deploy_pct": 0.29},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "ZTNA compliance evidence", "co_deploy_pct": 0.10}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity for ZPA access policies", "co_deploy_pct": 0.34},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity for Zscaler policies", "co_deploy_pct": 0.28},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Falcon device posture for access decisions", "co_deploy_pct": 0.29}
+    ],
+    "competes_with": ["cisco-duo", "cloudflare-zt", "netskope"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.29, "use_case": "ZTNA + EDR zero-trust endpoint access"},
+      {"partner": "okta", "pct": 0.34, "use_case": "ZTNA + IAM identity-driven access"},
+      {"partner": "splunk", "pct": 0.36, "use_case": "ZTNA + SIEM access monitoring"},
+      {"partner": "zscaler-casb", "pct": 0.62, "use_case": "Native Zscaler ZTNA + CASB"}
+    ]
+  },
+  "cloudflare-zt": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Cloudflare Access logs to Splunk", "co_deploy_pct": 0.18},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Access logs to Sentinel", "co_deploy_pct": 0.12},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Access events to Elastic", "co_deploy_pct": 0.09},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Zero trust compliance evidence", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta as identity provider", "co_deploy_pct": 0.22},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD as identity provider", "co_deploy_pct": 0.18}
+    ],
+    "competes_with": ["zscaler", "cisco-duo", "netskope"],
+    "common_stack_pairs": [
+      {"partner": "cloudflare-waf", "pct": 0.72, "use_case": "Native Cloudflare ZTNA + WAF"},
+      {"partner": "okta", "pct": 0.22, "use_case": "ZTNA + IAM identity access"},
+      {"partner": "crowdstrike", "pct": 0.15, "use_case": "ZTNA + EDR endpoint posture"}
+    ]
+  },
+  "netskope": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Netskope cloud activity logs to Splunk", "co_deploy_pct": 0.26},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Netskope alerts to Sentinel", "co_deploy_pct": 0.14},
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "Netskope alerts trigger SOAR", "co_deploy_pct": 0.09},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Cloud activity context for endpoint", "co_deploy_pct": 0.22},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "ZTNA/CASB compliance evidence", "co_deploy_pct": 0.07}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity for access policies", "co_deploy_pct": 0.26},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity integration", "co_deploy_pct": 0.22},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Falcon posture for access decisions", "co_deploy_pct": 0.22}
+    ],
+    "competes_with": ["zscaler", "cisco-duo", "cloudflare-zt"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.22, "use_case": "ZTNA + EDR CrowdStrike-Netskope alliance"},
+      {"partner": "okta", "pct": 0.26, "use_case": "ZTNA + IAM identity-driven access"},
+      {"partner": "splunk", "pct": 0.26, "use_case": "ZTNA + SIEM cloud access monitoring"},
+      {"partner": "netskope-casb", "pct": 0.68, "use_case": "Native Netskope ZTNA + CASB"}
+    ]
+  },
+
+  "tenable": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "Vulnerability scan results to Splunk", "co_deploy_pct": 0.38},
+      {"vendor_id": "ms-sentinel", "integration_type": "telemetry", "description": "Vulnerability data to Sentinel", "co_deploy_pct": 0.18},
+      {"vendor_id": "qradar", "integration_type": "telemetry", "description": "Vuln scan data to QRadar", "co_deploy_pct": 0.18},
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "Critical vulns trigger SOAR remediation", "co_deploy_pct": 0.16},
+      {"vendor_id": "xsoar", "integration_type": "alerts", "description": "Vuln alerts enrich XSOAR", "co_deploy_pct": 0.12},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Vulnerability management compliance", "co_deploy_pct": 0.18}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD for asset ownership context", "co_deploy_pct": 0.14},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Falcon asset inventory enrichment", "co_deploy_pct": 0.16}
+    ],
+    "competes_with": ["qualys", "rapid7"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.38, "use_case": "VM + SIEM vulnerability correlation"},
+      {"partner": "crowdstrike", "pct": 0.28, "use_case": "VM + EDR asset risk scoring"},
+      {"partner": "splunk-soar", "pct": 0.16, "use_case": "VM + SOAR automated remediation"},
+      {"partner": "vanta", "pct": 0.18, "use_case": "VM + GRC vulnerability compliance"}
+    ]
+  },
+  "qualys": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "Qualys scan results to Splunk", "co_deploy_pct": 0.32},
+      {"vendor_id": "ms-sentinel", "integration_type": "telemetry", "description": "Vulnerability data to Sentinel", "co_deploy_pct": 0.18},
+      {"vendor_id": "qradar", "integration_type": "telemetry", "description": "Scan results to QRadar", "co_deploy_pct": 0.14},
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "Critical vulns trigger SOAR", "co_deploy_pct": 0.11},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "VM compliance evidence", "co_deploy_pct": 0.14}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD asset context", "co_deploy_pct": 0.12}
+    ],
+    "competes_with": ["tenable", "rapid7"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.32, "use_case": "VM + SIEM vulnerability management"},
+      {"partner": "crowdstrike", "pct": 0.22, "use_case": "VM + EDR asset risk context"},
+      {"partner": "ms-sentinel", "pct": 0.18, "use_case": "VM + SIEM Microsoft ecosystem"}
+    ]
+  },
+  "rapid7": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "InsightVM results to Splunk", "co_deploy_pct": 0.22},
+      {"vendor_id": "ms-sentinel", "integration_type": "telemetry", "description": "Vulnerability data to Sentinel", "co_deploy_pct": 0.11},
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "Critical vulns trigger SOAR", "co_deploy_pct": 0.09},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "VM compliance evidence", "co_deploy_pct": 0.10}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD asset context", "co_deploy_pct": 0.09}
+    ],
+    "competes_with": ["tenable", "qualys"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.22, "use_case": "VM + SIEM vulnerability correlation"},
+      {"partner": "crowdstrike", "pct": 0.16, "use_case": "VM + EDR asset risk"}
+    ]
+  },
+
+  "cloudflare-waf": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "WAF event logs to Splunk", "co_deploy_pct": 0.22},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "WAF alerts to Sentinel", "co_deploy_pct": 0.12},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "WAF logs to Elastic", "co_deploy_pct": 0.11},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "WAF protection compliance evidence", "co_deploy_pct": 0.12}
+    ],
+    "feeds_from": [
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel for WAF rule updates", "co_deploy_pct": 0.08}
+    ],
+    "competes_with": ["f5-waf"],
+    "common_stack_pairs": [
+      {"partner": "cloudflare-zt", "pct": 0.72, "use_case": "Native Cloudflare WAF + ZTNA"},
+      {"partner": "splunk", "pct": 0.22, "use_case": "WAF + SIEM web attack monitoring"},
+      {"partner": "crowdstrike", "pct": 0.14, "use_case": "WAF + EDR perimeter and endpoint"}
+    ]
+  },
+  "f5-waf": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "F5 ASM/AWAF logs to Splunk", "co_deploy_pct": 0.24},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "WAF logs to Sentinel", "co_deploy_pct": 0.10},
+      {"vendor_id": "qradar", "integration_type": "logs", "description": "WAF logs to QRadar", "co_deploy_pct": 0.09},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "WAF compliance evidence", "co_deploy_pct": 0.06}
+    ],
+    "feeds_from": [
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel for WAF policies", "co_deploy_pct": 0.07}
+    ],
+    "competes_with": ["cloudflare-waf"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.24, "use_case": "WAF + SIEM enterprise web monitoring"},
+      {"partner": "qradar", "pct": 0.09, "use_case": "WAF + SIEM legacy enterprise"}
+    ]
+  },
+
+  "darktrace": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Darktrace anomaly alerts to Splunk", "co_deploy_pct": 0.26},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "NDR alerts to Sentinel", "co_deploy_pct": 0.16},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "NDR incidents trigger SOAR", "co_deploy_pct": 0.14},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "Darktrace alerts enrich XSOAR", "co_deploy_pct": 0.10},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "NDR coverage compliance", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Endpoint context for network anomalies", "co_deploy_pct": 0.18},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Identity context for network behavior", "co_deploy_pct": 0.12}
+    ],
+    "competes_with": ["vectra", "corelight"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.26, "use_case": "NDR + SIEM network-endpoint correlation"},
+      {"partner": "crowdstrike", "pct": 0.18, "use_case": "NDR + EDR network and endpoint"},
+      {"partner": "splunk-soar", "pct": 0.14, "use_case": "NDR + SOAR automated response"}
+    ]
+  },
+  "vectra": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Vectra detections to Splunk", "co_deploy_pct": 0.24},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "NDR alerts to Sentinel", "co_deploy_pct": 0.18},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Vectra threats trigger SOAR", "co_deploy_pct": 0.12},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "Vectra detections to XSOAR", "co_deploy_pct": 0.11},
+      {"vendor_id": "crowdstrike", "integration_type": "alerts", "description": "Network threat context for endpoint", "co_deploy_pct": 0.19}
+    ],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Endpoint context for network detections", "co_deploy_pct": 0.19},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity for network behavior", "co_deploy_pct": 0.16},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity context", "co_deploy_pct": 0.12}
+    ],
+    "competes_with": ["darktrace", "corelight"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.19, "use_case": "NDR + EDR network-endpoint XDR"},
+      {"partner": "splunk", "pct": 0.24, "use_case": "NDR + SIEM threat correlation"},
+      {"partner": "ms-sentinel", "pct": 0.18, "use_case": "NDR + cloud SIEM"}
+    ]
+  },
+  "corelight": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "Zeek-enriched network logs to Splunk", "co_deploy_pct": 0.28},
+      {"vendor_id": "elastic-siem", "integration_type": "logs", "description": "Zeek logs native Elastic integration", "co_deploy_pct": 0.22},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "Network metadata to Sentinel", "co_deploy_pct": 0.11},
+      {"vendor_id": "splunk-soar", "integration_type": "alerts", "description": "Network alerts trigger SOAR", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Endpoint context for network analysis", "co_deploy_pct": 0.14},
+      {"vendor_id": "recorded-future", "integration_type": "telemetry", "description": "Threat intel for network IOC matching", "co_deploy_pct": 0.09}
+    ],
+    "competes_with": ["darktrace", "vectra"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.28, "use_case": "NDR + SIEM Zeek-based hunting"},
+      {"partner": "elastic-siem", "pct": 0.22, "use_case": "NDR + Elastic Zeek native"},
+      {"partner": "crowdstrike", "pct": 0.14, "use_case": "NDR + EDR full visibility"}
+    ]
+  },
+
+  "splunk-soar": {
+    "feeds_into": [
+      {"vendor_id": "crowdstrike", "integration_type": "incidents", "description": "SOAR triggers Falcon containment actions", "co_deploy_pct": 0.28},
+      {"vendor_id": "okta", "integration_type": "incidents", "description": "SOAR triggers Okta user suspension", "co_deploy_pct": 0.19},
+      {"vendor_id": "zscaler", "integration_type": "incidents", "description": "SOAR blocks URLs/IPs in Zscaler", "co_deploy_pct": 0.11}
+    ],
+    "feeds_from": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Splunk notable events trigger playbooks", "co_deploy_pct": 0.48},
+      {"vendor_id": "crowdstrike", "integration_type": "incidents", "description": "Falcon incidents trigger automation", "co_deploy_pct": 0.28},
+      {"vendor_id": "proofpoint", "integration_type": "incidents", "description": "Email incidents trigger response", "co_deploy_pct": 0.22},
+      {"vendor_id": "darktrace", "integration_type": "incidents", "description": "NDR alerts trigger playbooks", "co_deploy_pct": 0.14},
+      {"vendor_id": "tenable", "integration_type": "alerts", "description": "Critical vulns trigger remediation", "co_deploy_pct": 0.16}
+    ],
+    "competes_with": ["xsoar", "tines"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.48, "use_case": "Native Splunk SIEM + SOAR"},
+      {"partner": "crowdstrike", "pct": 0.28, "use_case": "SOAR + EDR automated containment"},
+      {"partner": "proofpoint", "pct": 0.22, "use_case": "SOAR + email automated response"},
+      {"partner": "tenable", "pct": 0.16, "use_case": "SOAR + VM automated patching workflows"}
+    ]
+  },
+  "xsoar": {
+    "feeds_into": [
+      {"vendor_id": "crowdstrike", "integration_type": "incidents", "description": "XSOAR triggers Falcon response actions", "co_deploy_pct": 0.22},
+      {"vendor_id": "okta", "integration_type": "incidents", "description": "XSOAR triggers Okta user actions", "co_deploy_pct": 0.14},
+      {"vendor_id": "cortex-xdr", "integration_type": "incidents", "description": "Native XSOAR to XDR response", "co_deploy_pct": 0.58}
+    ],
+    "feeds_from": [
+      {"vendor_id": "cortex-xdr", "integration_type": "incidents", "description": "Native XDR detections trigger playbooks", "co_deploy_pct": 0.58},
+      {"vendor_id": "prisma-cloud", "integration_type": "incidents", "description": "Cloud alerts trigger XSOAR", "co_deploy_pct": 0.42},
+      {"vendor_id": "crowdstrike", "integration_type": "incidents", "description": "Falcon incidents enrich XSOAR", "co_deploy_pct": 0.22},
+      {"vendor_id": "proofpoint", "integration_type": "incidents", "description": "Email threats trigger playbooks", "co_deploy_pct": 0.16},
+      {"vendor_id": "wiz", "integration_type": "incidents", "description": "Wiz findings trigger remediation", "co_deploy_pct": 0.16}
+    ],
+    "competes_with": ["splunk-soar", "tines"],
+    "common_stack_pairs": [
+      {"partner": "cortex-xdr", "pct": 0.58, "use_case": "Native Palo Alto SOAR + XDR"},
+      {"partner": "prisma-cloud", "pct": 0.42, "use_case": "Native Palo Alto SOAR + CNAPP"},
+      {"partner": "crowdstrike", "pct": 0.22, "use_case": "SOAR + third-party EDR"},
+      {"partner": "proofpoint", "pct": 0.16, "use_case": "SOAR + email automated response"}
+    ]
+  },
+  "tines": {
+    "feeds_into": [
+      {"vendor_id": "crowdstrike", "integration_type": "incidents", "description": "Tines triggers Falcon containment", "co_deploy_pct": 0.14},
+      {"vendor_id": "okta", "integration_type": "incidents", "description": "Tines triggers Okta user actions", "co_deploy_pct": 0.12},
+      {"vendor_id": "zscaler", "integration_type": "incidents", "description": "Tines blocks in Zscaler", "co_deploy_pct": 0.06}
+    ],
+    "feeds_from": [
+      {"vendor_id": "elastic-siem", "integration_type": "alerts", "description": "Elastic alerts trigger Tines stories", "co_deploy_pct": 0.11},
+      {"vendor_id": "sumo-logic", "integration_type": "alerts", "description": "Sumo alerts trigger Tines", "co_deploy_pct": 0.06},
+      {"vendor_id": "wiz", "integration_type": "incidents", "description": "Wiz findings trigger Tines workflows", "co_deploy_pct": 0.12},
+      {"vendor_id": "abnormal", "integration_type": "incidents", "description": "Email threats trigger Tines", "co_deploy_pct": 0.09},
+      {"vendor_id": "crowdstrike", "integration_type": "incidents", "description": "Falcon alerts trigger Tines stories", "co_deploy_pct": 0.14}
+    ],
+    "competes_with": ["splunk-soar", "xsoar"],
+    "common_stack_pairs": [
+      {"partner": "crowdstrike", "pct": 0.14, "use_case": "No-code SOAR + EDR"},
+      {"partner": "elastic-siem", "pct": 0.11, "use_case": "No-code SOAR + open SIEM"},
+      {"partner": "wiz", "pct": 0.12, "use_case": "No-code SOAR + CNAPP"}
+    ]
+  },
+
+  "symantec-dlp": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "DLP incident alerts to Splunk", "co_deploy_pct": 0.28},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "DLP alerts to Sentinel", "co_deploy_pct": 0.12},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "DLP incidents trigger SOAR", "co_deploy_pct": 0.10},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "DLP compliance evidence", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user context for policies", "co_deploy_pct": 0.16},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity for DLP policies", "co_deploy_pct": 0.10}
+    ],
+    "competes_with": ["forcepoint-dlp", "nightfall", "code42"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.28, "use_case": "DLP + SIEM data loss monitoring"},
+      {"partner": "crowdstrike", "pct": 0.16, "use_case": "DLP + EDR endpoint data protection"},
+      {"partner": "zscaler", "pct": 0.12, "use_case": "DLP + ZTNA inline data protection"}
+    ]
+  },
+  "forcepoint-dlp": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "DLP alerts to Splunk", "co_deploy_pct": 0.18},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "DLP incidents to Sentinel", "co_deploy_pct": 0.08},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "DLP compliance evidence", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user context", "co_deploy_pct": 0.12},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity context", "co_deploy_pct": 0.07}
+    ],
+    "competes_with": ["symantec-dlp", "nightfall", "code42"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.18, "use_case": "DLP + SIEM data monitoring"},
+      {"partner": "crowdstrike", "pct": 0.10, "use_case": "DLP + EDR endpoint protection"}
+    ]
+  },
+  "nightfall": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Cloud DLP findings to Splunk", "co_deploy_pct": 0.09},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "DLP alerts to Sentinel", "co_deploy_pct": 0.06},
+      {"vendor_id": "tines", "integration_type": "incidents", "description": "DLP findings trigger Tines workflows", "co_deploy_pct": 0.05},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Cloud DLP compliance evidence", "co_deploy_pct": 0.06}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta user context for DLP policies", "co_deploy_pct": 0.07}
+    ],
+    "competes_with": ["symantec-dlp", "forcepoint-dlp", "code42"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.09, "use_case": "Cloud DLP + SIEM"},
+      {"partner": "vanta", "pct": 0.06, "use_case": "Cloud DLP + GRC compliance"}
+    ]
+  },
+  "code42": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "Incydr insider risk alerts to Splunk", "co_deploy_pct": 0.16},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Insider risk alerts to Sentinel", "co_deploy_pct": 0.08},
+      {"vendor_id": "splunk-soar", "integration_type": "incidents", "description": "Insider risk incidents trigger SOAR", "co_deploy_pct": 0.07},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Insider risk compliance", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity context for risk scoring", "co_deploy_pct": 0.14},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD user context", "co_deploy_pct": 0.12},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Falcon endpoint context for risk", "co_deploy_pct": 0.11}
+    ],
+    "competes_with": ["symantec-dlp", "forcepoint-dlp", "nightfall"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.16, "use_case": "Insider risk + SIEM monitoring"},
+      {"partner": "okta", "pct": 0.14, "use_case": "Insider risk + IAM identity context"},
+      {"partner": "crowdstrike", "pct": 0.11, "use_case": "Insider risk + EDR endpoint data"}
+    ]
+  },
+
+  "salt-security": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "API threat alerts to Splunk", "co_deploy_pct": 0.12},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "API security alerts to Sentinel", "co_deploy_pct": 0.07},
+      {"vendor_id": "xsoar", "integration_type": "incidents", "description": "API incidents to XSOAR", "co_deploy_pct": 0.05},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "API security compliance", "co_deploy_pct": 0.04}
+    ],
+    "feeds_from": [
+      {"vendor_id": "cloudflare-waf", "integration_type": "logs", "description": "WAF traffic for API discovery", "co_deploy_pct": 0.08},
+      {"vendor_id": "f5-waf", "integration_type": "logs", "description": "F5 traffic for API analysis", "co_deploy_pct": 0.06}
+    ],
+    "competes_with": ["noname", "traceable"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.12, "use_case": "API security + SIEM"},
+      {"partner": "cloudflare-waf", "pct": 0.08, "use_case": "API security + WAF layered protection"}
+    ]
+  },
+  "noname": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "API security alerts to Splunk", "co_deploy_pct": 0.10},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "API alerts to Sentinel", "co_deploy_pct": 0.06},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "API security compliance", "co_deploy_pct": 0.03}
+    ],
+    "feeds_from": [
+      {"vendor_id": "cloudflare-waf", "integration_type": "logs", "description": "WAF traffic for API discovery", "co_deploy_pct": 0.06},
+      {"vendor_id": "f5-waf", "integration_type": "logs", "description": "F5 traffic for API analysis", "co_deploy_pct": 0.05}
+    ],
+    "competes_with": ["salt-security", "traceable"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.10, "use_case": "API security + SIEM"},
+      {"partner": "cloudflare-waf", "pct": 0.06, "use_case": "API security + WAF"}
+    ]
+  },
+  "traceable": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "alerts", "description": "API threat alerts to Splunk", "co_deploy_pct": 0.08},
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "API security alerts to Sentinel", "co_deploy_pct": 0.05},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "API security compliance", "co_deploy_pct": 0.03}
+    ],
+    "feeds_from": [
+      {"vendor_id": "cloudflare-waf", "integration_type": "logs", "description": "WAF traffic for API analysis", "co_deploy_pct": 0.05}
+    ],
+    "competes_with": ["salt-security", "noname"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.08, "use_case": "API security + SIEM"},
+      {"partner": "cloudflare-waf", "pct": 0.05, "use_case": "API security + WAF"}
+    ]
+  },
+
+  "recorded-future": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "Threat intel feeds enriching Splunk", "co_deploy_pct": 0.34},
+      {"vendor_id": "ms-sentinel", "integration_type": "telemetry", "description": "TI indicators to Sentinel", "co_deploy_pct": 0.22},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "IOCs fed into Falcon for detection", "co_deploy_pct": 0.19},
+      {"vendor_id": "splunk-soar", "integration_type": "telemetry", "description": "TI enrichment for SOAR playbooks", "co_deploy_pct": 0.18},
+      {"vendor_id": "xsoar", "integration_type": "telemetry", "description": "TI enrichment for XSOAR", "co_deploy_pct": 0.14},
+      {"vendor_id": "cloudflare-waf", "integration_type": "telemetry", "description": "Threat intel for WAF rules", "co_deploy_pct": 0.08},
+      {"vendor_id": "proofpoint", "integration_type": "telemetry", "description": "TI for email threat detection", "co_deploy_pct": 0.14}
+    ],
+    "feeds_from": [],
+    "competes_with": ["mandiant", "anomali", "threatconnect"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.34, "use_case": "Threat intel + SIEM enrichment"},
+      {"partner": "crowdstrike", "pct": 0.19, "use_case": "Threat intel + EDR IOC detection"},
+      {"partner": "splunk-soar", "pct": 0.18, "use_case": "Threat intel + SOAR enrichment"},
+      {"partner": "ms-sentinel", "pct": 0.22, "use_case": "Threat intel + cloud SIEM"}
+    ]
+  },
+  "mandiant": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "Mandiant TI to Splunk", "co_deploy_pct": 0.22},
+      {"vendor_id": "ms-sentinel", "integration_type": "telemetry", "description": "TI indicators to Sentinel", "co_deploy_pct": 0.16},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "Mandiant IOCs for Falcon", "co_deploy_pct": 0.12},
+      {"vendor_id": "splunk-soar", "integration_type": "telemetry", "description": "TI enrichment for playbooks", "co_deploy_pct": 0.11},
+      {"vendor_id": "xsoar", "integration_type": "telemetry", "description": "TI enrichment for XSOAR", "co_deploy_pct": 0.09}
+    ],
+    "feeds_from": [],
+    "competes_with": ["recorded-future", "anomali", "threatconnect"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.22, "use_case": "Threat intel + SIEM"},
+      {"partner": "crowdstrike", "pct": 0.12, "use_case": "Threat intel + EDR"},
+      {"partner": "ms-sentinel", "pct": 0.16, "use_case": "Threat intel + cloud SIEM"}
+    ]
+  },
+  "anomali": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "ThreatStream indicators to Splunk", "co_deploy_pct": 0.18},
+      {"vendor_id": "ms-sentinel", "integration_type": "telemetry", "description": "TI to Sentinel", "co_deploy_pct": 0.10},
+      {"vendor_id": "qradar", "integration_type": "telemetry", "description": "TI indicators to QRadar", "co_deploy_pct": 0.09},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "IOCs for Falcon detection", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [],
+    "competes_with": ["recorded-future", "mandiant", "threatconnect"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.18, "use_case": "TIP + SIEM threat enrichment"},
+      {"partner": "qradar", "pct": 0.09, "use_case": "TIP + legacy SIEM"}
+    ]
+  },
+  "threatconnect": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "telemetry", "description": "TC threat intel to Splunk", "co_deploy_pct": 0.14},
+      {"vendor_id": "ms-sentinel", "integration_type": "telemetry", "description": "TI to Sentinel", "co_deploy_pct": 0.08},
+      {"vendor_id": "splunk-soar", "integration_type": "telemetry", "description": "TI enrichment for SOAR playbooks", "co_deploy_pct": 0.09},
+      {"vendor_id": "crowdstrike", "integration_type": "telemetry", "description": "IOCs for Falcon", "co_deploy_pct": 0.07}
+    ],
+    "feeds_from": [],
+    "competes_with": ["recorded-future", "mandiant", "anomali"],
+    "common_stack_pairs": [
+      {"partner": "splunk", "pct": 0.14, "use_case": "TIP + SIEM orchestrated intel"},
+      {"partner": "splunk-soar", "pct": 0.09, "use_case": "TIP + SOAR intel-driven automation"}
+    ]
+  },
+
+  "netskope-casb": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "CASB cloud activity logs to Splunk", "co_deploy_pct": 0.24},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "CASB alerts to Sentinel", "co_deploy_pct": 0.12},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Cloud access compliance evidence", "co_deploy_pct": 0.06}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity for cloud access policies", "co_deploy_pct": 0.22},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity context", "co_deploy_pct": 0.18}
+    ],
+    "competes_with": ["zscaler-casb", "ms-cloud-apps"],
+    "common_stack_pairs": [
+      {"partner": "netskope", "pct": 0.68, "use_case": "Native Netskope CASB + ZTNA"},
+      {"partner": "crowdstrike", "pct": 0.18, "use_case": "CASB + EDR cloud-endpoint"},
+      {"partner": "splunk", "pct": 0.24, "use_case": "CASB + SIEM cloud monitoring"}
+    ]
+  },
+  "zscaler-casb": {
+    "feeds_into": [
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "CASB logs to Splunk", "co_deploy_pct": 0.22},
+      {"vendor_id": "ms-sentinel", "integration_type": "logs", "description": "CASB alerts to Sentinel", "co_deploy_pct": 0.10},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Cloud access compliance", "co_deploy_pct": 0.05}
+    ],
+    "feeds_from": [
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity for CASB policies", "co_deploy_pct": 0.20},
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Azure AD identity context", "co_deploy_pct": 0.18}
+    ],
+    "competes_with": ["netskope-casb", "ms-cloud-apps"],
+    "common_stack_pairs": [
+      {"partner": "zscaler", "pct": 0.62, "use_case": "Native Zscaler CASB + ZTNA"},
+      {"partner": "crowdstrike", "pct": 0.16, "use_case": "CASB + EDR cloud-endpoint"},
+      {"partner": "splunk", "pct": 0.22, "use_case": "CASB + SIEM cloud monitoring"}
+    ]
+  },
+  "ms-cloud-apps": {
+    "feeds_into": [
+      {"vendor_id": "ms-sentinel", "integration_type": "alerts", "description": "Native MCAS alerts to Sentinel", "co_deploy_pct": 0.52},
+      {"vendor_id": "ms-defender", "integration_type": "alerts", "description": "Cloud app alerts correlated with Defender", "co_deploy_pct": 0.48},
+      {"vendor_id": "splunk", "integration_type": "logs", "description": "MCAS logs to Splunk", "co_deploy_pct": 0.12},
+      {"vendor_id": "vanta", "integration_type": "telemetry", "description": "Cloud app compliance evidence", "co_deploy_pct": 0.08}
+    ],
+    "feeds_from": [
+      {"vendor_id": "entra-id", "integration_type": "identity", "description": "Native Azure AD identity context", "co_deploy_pct": 0.56},
+      {"vendor_id": "okta", "integration_type": "identity", "description": "Okta identity for hybrid environments", "co_deploy_pct": 0.09}
+    ],
+    "competes_with": ["netskope-casb", "zscaler-casb"],
+    "common_stack_pairs": [
+      {"partner": "ms-sentinel", "pct": 0.52, "use_case": "Native Microsoft CASB + SIEM"},
+      {"partner": "ms-defender", "pct": 0.48, "use_case": "Native Microsoft CASB + EDR"},
+      {"partner": "entra-id", "pct": 0.56, "use_case": "Native Microsoft CASB + IAM"}
+    ]
+  }
+}
