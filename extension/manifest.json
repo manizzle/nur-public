@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "nur collector",
+  "version": "0.1.0",
+  "description": "Capture and anonymize security dashboard data. You see everything before it's sent.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://nur.saramena.us/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "nur collector"
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  }
+}

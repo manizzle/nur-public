@@ -1,0 +1,651 @@
+/**
+ * styles.css — nur collector extension styling
+ * Dark theme, clean and professional. Security people will read this.
+ */
+
+/* ── Reset & base ───────────────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #e0e0e0;
+  background: #1a1a2e;
+}
+
+/* ── Popup container ────────────────────────────────────────────────── */
+
+.popup-container {
+  width: 400px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #2a2a4a;
+}
+
+.popup-header h1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.settings-icon {
+  color: #888;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.settings-icon:hover {
+  color: #e0e0e0;
+}
+
+/* ── Status bar ─────────────────────────────────────────────────────── */
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #16213e;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 11px;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #555;
+  flex-shrink: 0;
+}
+
+.status-dot.active {
+  background: #4caf50;
+}
+
+.status-dot.inactive {
+  background: #f44336;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+
+.actions {
+  margin-bottom: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #0f3460;
+  color: #e0e0e0;
+  width: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1a5276;
+}
+
+.btn-submit {
+  background: #1b5e20;
+  color: #e0e0e0;
+  width: 100%;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #2e7d32;
+}
+
+.btn-small {
+  padding: 4px 10px;
+  font-size: 11px;
+  background: #2a2a4a;
+  color: #ccc;
+}
+
+.btn-small:hover {
+  background: #3a3a5a;
+}
+
+/* ── Status messages ────────────────────────────────────────────────── */
+
+.status-message {
+  padding: 6px 0;
+  font-size: 12px;
+  min-height: 24px;
+}
+
+.status-working {
+  color: #ffc107;
+}
+
+.status-success {
+  color: #4caf50;
+}
+
+.status-error {
+  color: #f44336;
+}
+
+/* ── Preview panel ──────────────────────────────────────────────────── */
+
+.preview-panel {
+  margin-bottom: 12px;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.preview-header h2 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.preview-content {
+  background: #0f0f23;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+  padding: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.raw-content {
+  background: #0f0f23;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+  padding: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 11px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: #8be9fd;
+}
+
+.preview-section {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1a1a3e;
+}
+
+.preview-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.preview-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.preview-value {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 11px;
+  padding: 2px 0;
+  color: #e0e0e0;
+}
+
+/* Color coding for anonymization status */
+.preview-value.safe {
+  color: #4caf50; /* green — safe/anonymized */
+}
+
+.preview-value.stripped {
+  color: #f44336; /* red — stripped */
+}
+
+.preview-value.hashed {
+  color: #ffc107; /* yellow — hashed */
+}
+
+.metric-label {
+  color: #888;
+}
+
+.metric-value {
+  color: #8be9fd;
+  font-weight: 600;
+}
+
+.module-active {
+  color: #4caf50;
+}
+
+.module-inactive {
+  color: #f44336;
+  opacity: 0.7;
+}
+
+.preview-more {
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+  padding: 2px 0;
+}
+
+.preview-table-label {
+  font-size: 11px;
+  color: #ffc107;
+  margin: 6px 0 2px;
+}
+
+.anonymization-report {
+  border-top: 1px solid #f4433666;
+  padding-top: 8px;
+}
+
+/* ── Action row (side by side buttons) ─────────────────────────────── */
+
+.action-row {
+  display: flex;
+  gap: 8px;
+}
+
+.action-row .btn-primary {
+  flex: 1;
+}
+
+.btn-scan {
+  flex: 1;
+  background: #4a1080;
+  color: #e0e0e0;
+}
+
+.btn-scan:hover:not(:disabled) {
+  background: #6a1ca0;
+}
+
+.btn-stop {
+  background: #8b0000;
+  color: #e0e0e0;
+  margin-top: 8px;
+}
+
+.btn-stop:hover {
+  background: #b00000;
+}
+
+/* ── Scan progress ─────────────────────────────────────────────────── */
+
+.scan-progress {
+  margin-bottom: 12px;
+  padding: 12px;
+  background: #16213e;
+  border-radius: 6px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background: #2a2a4a;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #4a1080;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #e0e0e0;
+  margin-bottom: 2px;
+}
+
+.progress-detail {
+  font-size: 11px;
+  color: #888;
+}
+
+/* ── Page count badge ──────────────────────────────────────────────── */
+
+.preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-count {
+  font-size: 11px;
+  color: #4a1080;
+  font-weight: 600;
+}
+
+.page-path {
+  font-size: 10px;
+  color: #666;
+  margin-left: 4px;
+}
+
+.preview-sublabel {
+  font-size: 11px;
+  color: #aaa;
+  margin: 6px 0 2px;
+  font-weight: 500;
+}
+
+/* ── Compare / Utilization Report ──────────────────────────────────── */
+
+.btn-compare {
+  background: #0d47a1;
+  color: #e0e0e0;
+}
+
+.btn-compare:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+.compare-panel {
+  margin-bottom: 12px;
+}
+
+.compare-summary {
+  text-align: center;
+  padding: 16px 12px;
+  margin-bottom: 12px;
+  background: #0f0f23;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+}
+
+.compare-vendor {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 8px;
+}
+
+.compare-stat {
+  margin-bottom: 6px;
+}
+
+.compare-big-number {
+  font-size: 36px;
+  font-weight: 700;
+  color: #8be9fd;
+  display: block;
+}
+
+.compare-stat-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.compare-meta {
+  font-size: 11px;
+  color: #666;
+}
+
+.compare-section {
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: #0f0f23;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+}
+
+.compare-section-header {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #1a1a3e;
+}
+
+.compare-section-header.good { color: #4caf50; }
+.compare-section-header.warning { color: #ff9800; }
+.compare-section-header.gap { color: #f44336; }
+.compare-section-header.reco { color: #8be9fd; }
+
+.compare-item {
+  font-size: 11px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  padding: 3px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.compare-item.good { color: #4caf50; }
+.compare-item.warning { color: #ff9800; }
+.compare-item.gap { color: #e0e0e0; flex-direction: column; align-items: flex-start; }
+
+.compare-item-name {
+  margin-bottom: 2px;
+}
+
+.compare-peer-pct {
+  font-size: 10px;
+  color: #666;
+}
+
+.compare-bar-container {
+  width: 100%;
+  height: 12px;
+  background: #1a1a3e;
+  border-radius: 3px;
+  position: relative;
+  margin-top: 2px;
+}
+
+.compare-bar {
+  height: 100%;
+  background: #f44336;
+  border-radius: 3px;
+  opacity: 0.6;
+}
+
+.compare-bar-label {
+  position: absolute;
+  right: 4px;
+  top: 0;
+  font-size: 9px;
+  color: #ccc;
+  line-height: 12px;
+}
+
+.compare-reco {
+  padding: 6px 0;
+  border-bottom: 1px solid #1a1a3e;
+}
+
+.compare-reco:last-child {
+  border-bottom: none;
+}
+
+.compare-reco-msg {
+  font-size: 12px;
+  color: #8be9fd;
+  margin-bottom: 4px;
+}
+
+.compare-reco-item {
+  font-size: 11px;
+  color: #ccc;
+  padding-left: 12px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.compare-more {
+  font-size: 10px;
+  color: #666;
+  font-style: italic;
+  padding-left: 12px;
+}
+
+/* ── Hidden utility ─────────────────────────────────────────────────── */
+
+.hidden {
+  display: none;
+}
+
+/* ── Options page ───────────────────────────────────────────────────── */
+
+.options-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 24px;
+}
+
+.options-header {
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #2a2a4a;
+}
+
+.options-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ccc;
+  margin-bottom: 6px;
+}
+
+.form-group input[type="url"] {
+  width: 100%;
+  padding: 8px 12px;
+  background: #16213e;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="url"]:focus {
+  outline: none;
+  border-color: #0f3460;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #4caf50;
+}
+
+.form-hint {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.connection-status {
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.connection-status.testing {
+  color: #ffc107;
+}
+
+.connection-status.connected {
+  color: #4caf50;
+}
+
+.connection-status.error {
+  color: #f44336;
+}
+
+.save-status {
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.save-status.saved {
+  color: #4caf50;
+}
+
+/* ── Scrollbar styling ──────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f23;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a4a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a5a;
+}

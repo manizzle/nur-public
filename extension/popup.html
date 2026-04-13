@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nur collector</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <h1>nur collector</h1>
+      <a href="#" id="settings-btn" class="settings-icon" title="Settings">&#9881;</a>
+    </header>
+
+    <!-- Current page status -->
+    <div class="status-bar">
+      <span class="status-dot" id="status-dot"></span>
+      <span class="status-text" id="page-status">Detecting page...</span>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions action-row">
+      <button id="capture-btn" class="btn btn-primary">Capture Page</button>
+      <button id="fullscan-btn" class="btn btn-scan">Full Scan</button>
+    </div>
+
+    <!-- Scan progress (hidden until Full Scan) -->
+    <div id="scan-progress" class="scan-progress hidden">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="progress-text" id="progress-text">Discovering pages...</div>
+      <div class="progress-detail" id="progress-detail"></div>
+      <button id="stop-scan-btn" class="btn btn-small btn-stop">Stop Scan</button>
+    </div>
+
+    <!-- Status message -->
+    <div id="status-message" class="status-message"></div>
+
+    <!-- Preview panel (hidden until capture) -->
+    <div id="preview-panel" class="preview-panel hidden">
+      <div class="preview-header">
+        <h2>Data Preview</h2>
+        <div class="preview-actions">
+          <span id="page-count" class="page-count"></span>
+          <button id="toggle-raw" class="btn btn-small">Raw JSON</button>
+        </div>
+      </div>
+      <div id="preview-content" class="preview-content">
+      </div>
+      <div id="raw-content" class="raw-content hidden">
+      </div>
+    </div>
+
+    <!-- Compare panel (hidden until scan + compare) -->
+    <div id="compare-panel" class="compare-panel hidden">
+      <div class="preview-header">
+        <h2>Utilization Report</h2>
+        <button id="back-to-preview" class="btn btn-small">Back to Data</button>
+      </div>
+      <div id="compare-content" class="preview-content">
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="actions action-row">
+      <button id="compare-btn" class="btn btn-compare" disabled>Utilization Report</button>
+      <button id="submit-btn" class="btn btn-submit" disabled>Submit to nur</button>
+    </div>
+  </div>
+
+  <script src="anonymize.js"></script>
+  <script src="compare.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

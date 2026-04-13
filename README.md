@@ -79,7 +79,28 @@ All fields committed, aggregated, individual values discarded.
 
 ---
 
-## Quick Start
+## Quick Start — Browser Extension
+
+The fastest way to contribute. Install the extension, scan a dashboard, see your utilization report.
+
+1. Clone this repo (or download the `extension/` folder)
+2. Open `chrome://extensions` in Chrome
+3. Enable **Developer Mode** (top right)
+4. Click **Load unpacked** and select the `extension/` folder
+5. Navigate to any dashboard (AWS Console, CrowdStrike, Splunk, etc.)
+6. Click the nur collector icon and hit **Full Scan**
+
+The extension walks through every page, captures structural fingerprints and usage metrics, anonymizes everything in your browser, and shows you exactly what will be sent before you approve.
+
+**Two modes:**
+- **Capture Page** -- scrape the current page only
+- **Full Scan** -- crawl the entire dashboard, every tab, every section
+
+After scanning, click **Utilization Report** to see what you're using vs. what's sitting on the shelf.
+
+---
+
+## CLI
 
 ```bash
 pip install nur
