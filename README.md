@@ -2,165 +2,174 @@
 
 # nur
 
-**Peer-verified security intelligence -- what your peers actually use, what they pay, and what stopped the attack.**
+**Before you buy another security tool, know what you have.**
 
 <img src="demo/nur-demo.gif" alt="nur demo" width="750" />
 
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square)](https://python.org)
-[![Vendors Tracked](https://img.shields.io/badge/vendors-3%2C000%2B%20tracked-orange?style=flat-square)](#)
 
 </div>
 
 ---
 
-## The Problem
+## The problem
 
-Vendor bakeoffs are duplicated across every org. Gartner costs six figures and is pay-to-play. G2 reviews are gamed. Signal DMs to peers are the real system -- unscalable and unstructured.
+Every month another vendor pitches you. Another demo. Another "we need to talk about your security posture."
 
-A CISO evaluated 12 AI security vendors for the Board last quarter. They all sounded the same. Different logos. Different positioning decks. Same pitch.
+You don't have time for it. The industry is bloated. You already own a dozen tools you barely use. Before you buy anything new, you need to answer four questions:
 
-An analyst with 4,000+ vendors in his database told us: *"We're missing a very important part -- what works. We don't know."*
+1. **What does this tool actually do?** (not what the pitch deck says)
+2. **Do I already have something that does this?**
+3. **How do my current tools connect to each other?**
+4. **What are my peers paying for the same thing?**
 
-The data that matters -- what tool stopped the attack, what the real cost was, how long deployment took -- doesn't exist anywhere. nur fixes that.
+Nobody answers these today. Gartner costs six figures and vendors pay for their rankings. G2 reviews are gamed. DM-ing peers works, but it doesn't scale and nobody shares real numbers in public.
+
+**nur answers these questions in 60 seconds, from the tools you already have open.**
 
 ---
 
-## How It Works
+## How it works
 
-**1. Contribute** -- Rate a vendor, submit attack data, or report IOCs. Via web form, CLI, or voice. 60 seconds.
-
-**2. Aggregate** -- Your data is committed cryptographically, running sums are updated, and individual values are discarded. The server never sees who contributed what.
-
-**3. Query** -- Get back what peers across your vertical actually use, what they pay, and what stopped real attacks. Cryptographic receipts prove your data was counted.
+1. **Install the browser extension.** It's open source. It runs on your machine.
+2. **Visit the dashboards you already log into.** AWS, CrowdStrike, Splunk, Okta, whatever.
+3. **Click Scan.** You get a report showing what's unused, what's not integrated, and (once peers contribute) how your stack compares to similar companies.
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant C as Client (your machine)
-    participant S as Server (accountable compute)
-    participant Q as Consumer (querier)
-
-    rect rgb(235, 245, 235)
-    Note over C,Q: CONTRIBUTION PHASE
-    Note over C: 1. COLLECT
-    Note over C: 2. SCRUB — Remove PII, hash IOCs
-    Note over C: 3. TRANSLATE — Drop free text, keep scores
-    C->>S: POST /contribute/submit
-    S->>S: 4. VALIDATE
-    S->>S: 5. COMMIT (Pedersen hash)
-    S->>S: 6. AGGREGATE (running sums)
-    S->>S: 7. MERKLE TREE
-    S->>S: 8. DISCARD individual values
-    S-->>C: RECEIPT (commitment + proof + signature)
-    end
-
-    rect rgb(235, 235, 245)
-    Note over C,Q: QUERY + VERIFICATION
-    Q->>S: GET /verify/aggregate/{vendor}
-    S-->>Q: Proof response (Merkle root + commitments)
-    Q->>Q: VERIFY locally
-    end
+flowchart LR
+    A[You scan your<br/>dashboards] --> B[Your browser strips<br/>private data]
+    B --> C[Only anonymized<br/>counts get sent]
+    C --> D[You get a report:<br/>unused tools,<br/>integration gaps,<br/>peer benchmarks]
 ```
 
----
-
-## What You Can Evaluate
-
-| Dimension | What It Captures |
-|-----------|-----------------|
-| Detection | Overall score, detection rate, false positive rate |
-| Price | Annual cost, per-seat pricing, contract length, discount |
-| Support | Quality score, escalation ease, SLA response time |
-| Performance | CPU overhead, memory usage, scan latency, deploy time |
-| Decision | Chose this vendor?, main decision factor, would buy again? |
-
-All fields committed, aggregated, individual values discarded.
+Nothing leaves your browser without your approval. Emails, IP addresses, employee names, hostnames, and dollar amounts are stripped before anything is sent. You see exactly what will be transmitted before you click submit. Every line of code is open source.
 
 ---
 
-## Quick Start — Browser Extension
+## What you get back today
 
-The fastest way to contribute. Install the extension, scan a dashboard, see your utilization report.
+Install it, scan your stack. You immediately get:
 
-1. Clone this repo (or download the `extension/` folder)
+- **Shelfware X-ray.** Every tool, every feature, colored by whether you actually use it. A real dollar figure on the features nobody touches.
+- **Integration map.** Which of your tools talk to each other. Which should but don't.
+
+Once 50 organizations have contributed, you also unlock:
+
+- **Peer benchmarks.** What similar companies pay. What they use. What they dropped and why.
+
+Until then, you still get value the moment you scan. You don't wait on anyone else.
+
+---
+
+## Who this is for
+
+You own security at a growing company: a YC Series A-D, a zfellows portfolio company, or the first security hire at a mid-sized startup. You don't have six figures to spend on Gartner. Your peer group isn't giving you hard numbers.
+
+**Install it. Scan one tool. Tell us what breaks.**
+
+First 50 contributors unlock peer benchmarks for the whole community.
+
+---
+
+## Install
+
+1. Clone this repo or download the `extension/` folder
 2. Open `chrome://extensions` in Chrome
 3. Enable **Developer Mode** (top right)
 4. Click **Load unpacked** and select the `extension/` folder
-5. Navigate to any dashboard (AWS Console, CrowdStrike, Splunk, etc.)
-6. Click the nur collector icon and hit **Full Scan**
+5. Navigate to any dashboard you already use
+6. Click the nur icon and hit **Full Scan**
 
-The extension walks through every page, captures structural fingerprints and usage metrics, anonymizes everything in your browser, and shows you exactly what will be sent before you approve.
+After scanning, click **Utilization Report** to see your shelfware and integration gaps.
 
 **Two modes:**
-- **Capture Page** -- scrape the current page only
-- **Full Scan** -- crawl the entire dashboard, every tab, every section
-
-After scanning, click **Utilization Report** to see what you're using vs. what's sitting on the shelf.
+- **Capture Page** — scans only the page you're on
+- **Full Scan** — crawls the entire dashboard, every tab, every section
 
 ---
 
-## CLI
+## CLI (for people who want to automate)
 
 ```bash
 pip install nur
 nur init
-nur register you@yourorg.com
-nur eval --vendor crowdstrike        # submit a vendor evaluation
+nur eval --vendor crowdstrike        # submit a vendor review
 nur market edr                       # see what peers actually use
-nur report lockbit_iocs.json         # upload IOCs, get remediation intel
 ```
 
-Or contribute via web -- no CLI needed: **[nur.saramena.us/contribute](https://nur.saramena.us/contribute)**
+Or contribute via web, no install needed: **[nur.saramena.us/contribute](https://nur.saramena.us/contribute)**
 
 ---
 
-## Cryptographic Guarantees
+## For security engineers
 
-| Primitive | What It Does |
-|-----------|-------------|
-| Pedersen Commitments | Server can't alter your values after receipt |
-| Merkle Trees | Server can't add or remove contributions undetected |
-| ZKP Range Proofs | Proves scores are valid without revealing them |
-| Dice Chains | Client-side hash matches server commitment end-to-end |
-| Blind Category Discovery | New threat categories emerge without server learning names until quorum |
-| Behavioral Data Poisoning Defense | Trust scoring based on contribution patterns, not identity |
+If you want to vet this before installing, the things that matter:
 
----
+### What leaves your browser
 
-## What Leaves Your Organization
+All anonymization runs client-side. Everything below is open source and auditable.
 
-All anonymization runs **client-side** -- on your machine, before anything is transmitted. You can read every line of code.
-
-| Transmitted | Stripped Before Transmission |
-|------------|----------------------------|
+| Transmitted | Stripped before transmission |
+|------------|------------------------------|
 | Numeric scores (e.g. `9.2`) | Free-text notes |
-| Detection rates | IP addresses, hostnames |
-| Boolean flags (`would_buy: true`) | Employee names, org identity |
+| Detection rates, utilization percentages | IP addresses, hostnames |
+| Boolean flags (`would_buy: true`) | Employee names, organization identity |
+| Hashed threat indicators (SHA-256) | Network topology |
+| Product feature identifiers | Raw dollar amounts (bucketed instead) |
 | MITRE technique IDs (`T1566`) | Sigma rules, action strings |
-| Hashed IOC values (SHA-256) | Network topology |
-| Remediation categories | Raw dollar amounts |
 
-**Server-side:** individual values are discarded after aggregation. Only commitment hashes and running sums are retained. No per-organization attribution is possible.
+After aggregation on the server, individual values are discarded. Only commitment hashes and running totals are retained. No per-organization attribution is possible.
+
+### Cryptographic guarantees
+
+- **Pedersen commitments** — the server cannot change your values after receipt
+- **Merkle trees** — the server cannot add or remove contributions without detection
+- **Zero-knowledge range proofs** — scores can be validated without revealing them
+- **Client-side anonymization** — everything runs on your machine before transmission
+- **Dice chains** — end-to-end hash attestation from source to aggregate
+
+### Full protocol
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant C as Client
+    participant S as Server
+    participant Q as Querier
+
+    rect rgb(235, 245, 235)
+    Note over C,Q: Contribution
+    Note over C: Scrub PII locally
+    Note over C: Compute feature vector
+    C->>S: POST /contribute/submit
+    S->>S: Validate, commit (Pedersen), aggregate
+    S->>S: Discard individual values
+    S-->>C: Receipt (commitment + signature)
+    end
+
+    rect rgb(235, 235, 245)
+    Note over C,Q: Query
+    Q->>S: GET /aggregate/{vendor}
+    S-->>Q: Aggregate + Merkle proof
+    Q->>Q: Verify locally
+    end
+```
+
+### Regulatory compliance
+
+- **HIPAA Safe Harbor** (45 CFR 164.514(b)) — all 18 identifiers removed and verified programmatically
+- **GDPR Recital 26** — re-identification risk assessed across four vectors; individual values discarded
+- **CISA 2015** — threat intelligence sharing carries explicit liability shield, antitrust exemption, and FOIA exemption
+- **Attorney-client privilege preserved** — incident response firms contribute technique IDs and detection rates, never forensic report content
+
+The code is open source. Compliance is verifiable, not a vendor assertion.
 
 ---
 
-## Regulatory Compliance
+## Get in touch
 
-nur's anonymization pipeline meets federal de-identification standards:
-
-- **HIPAA Safe Harbor** (45 CFR 164.514(b)) -- all 18 identifiers mapped and verified programmatically
-- **GDPR Recital 26** -- re-identification risk assessed across 4 vectors; individual values discarded, only aggregates retained
-- **CISA 2015** -- threat intelligence sharing is explicitly protected with liability shield, antitrust exemption, and FOIA exemption
-- **Attorney-client privilege** -- IR firms contribute technique IDs and detection rates, not forensic report content; privilege chain is never touched
-
-The code is open source. The compliance is verifiable by anyone -- not a vendor assertion.
-
----
-
-## Get In Touch
-
-Interested in the full platform, the private codebase, or just want to talk about what you're seeing in the field?
+Building in the open. Want to talk about what you're seeing in the field, or get access to the full platform?
 
 <div align="center">
 
@@ -174,4 +183,4 @@ Interested in the full platform, the private codebase, or just want to talk abou
 
 ## License
 
-**Code:** [AGPL-3.0](LICENSE) | **Data:** [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/)
+**Code:** [AGPL-3.0](LICENSE) &nbsp;|&nbsp; **Data:** [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/)
