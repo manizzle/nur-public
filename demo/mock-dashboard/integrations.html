@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Falcon Sentinel — Integrations</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <script src="nav.js"></script>
+  <main>
+    <header class="page-head">
+      <div>
+        <h1>Integrations</h1>
+        <div class="meta">14 connectors available · 3 connected · 11 unused</div>
+      </div>
+      <div class="status-indicator warning">11 idle integrations</div>
+    </header>
+
+    <div class="alert info">
+      <span>Use the search bar to find new integrations. <a href="#" style="color:#58a6ff;">Browse marketplace →</a></span>
+    </div>
+
+    <form>
+      <div class="form-row">
+        <input type="search" placeholder="Search integrations…">
+      </div>
+    </form>
+
+    <div class="section-header">
+      <h2>SIEM &amp; Log Aggregation</h2>
+      <span class="count">1 of 4 connected</span>
+    </div>
+    <div class="card-grid">
+      <div class="integration-card">
+        <div class="icon">SP</div>
+        <div>
+          <div class="name">Splunk Cloud</div>
+          <div class="description">Stream detections to Splunk for correlation.</div>
+        </div>
+        <span class="status-badge connected">Connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">EL</div>
+        <div>
+          <div class="name">Elastic / Kibana</div>
+          <div class="description">Index Falcon events into Elasticsearch.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">DD</div>
+        <div>
+          <div class="name">Datadog</div>
+          <div class="description">Forward security events to Datadog logs.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">SL</div>
+        <div>
+          <div class="name">Sumo Logic</div>
+          <div class="description">Stream events to Sumo Logic Cloud SIEM.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Identity &amp; Access</h2>
+      <span class="count">1 of 4 connected</span>
+    </div>
+    <div class="card-grid">
+      <div class="integration-card">
+        <div class="icon">OK</div>
+        <div>
+          <div class="name">Okta</div>
+          <div class="description">Sync identities and detect anomalous logins.</div>
+        </div>
+        <span class="status-badge connected">Connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">MS</div>
+        <div>
+          <div class="name">Microsoft Entra ID (Azure AD)</div>
+          <div class="description">Sync M365 / Azure identities.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">PI</div>
+        <div>
+          <div class="name">Ping Identity</div>
+          <div class="description">SSO and federation integration.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">CA</div>
+        <div>
+          <div class="name">CyberArk</div>
+          <div class="description">PAM session monitoring &amp; vault sync.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Cloud Providers</h2>
+      <span class="count">0 of 3 connected</span>
+    </div>
+    <div class="card-grid">
+      <div class="integration-card disconnected">
+        <div class="icon">AW</div>
+        <div>
+          <div class="name">Amazon Web Services (AWS)</div>
+          <div class="description">CloudTrail, GuardDuty, S3 misconfiguration.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">AZ</div>
+        <div>
+          <div class="name">Azure</div>
+          <div class="description">Activity logs, Defender for Cloud findings.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">GC</div>
+        <div>
+          <div class="name">Google Cloud (GCP)</div>
+          <div class="description">Audit logs and Security Command Center.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>ITSM &amp; Communication</h2>
+      <span class="count">1 of 3 connected</span>
+    </div>
+    <div class="card-grid">
+      <div class="integration-card">
+        <div class="icon">SL</div>
+        <div>
+          <div class="name">Slack</div>
+          <div class="description">Alert routing and case collaboration.</div>
+        </div>
+        <span class="status-badge connected">Connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">JR</div>
+        <div>
+          <div class="name">Jira</div>
+          <div class="description">Auto-create tickets for high-severity events.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">SN</div>
+        <div>
+          <div class="name">ServiceNow</div>
+          <div class="description">Sync incidents to ITSM.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Vulnerability Management</h2>
+      <span class="count">0 of 3 connected · suggested for your stack</span>
+    </div>
+    <div class="card-grid">
+      <div class="integration-card disconnected">
+        <div class="icon">QU</div>
+        <div>
+          <div class="name">Qualys</div>
+          <div class="description">Pull vulnerability scan results.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">TE</div>
+        <div>
+          <div class="name">Tenable</div>
+          <div class="description">Tenable.io / Nessus integration.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+      <div class="integration-card disconnected">
+        <div class="icon">RP</div>
+        <div>
+          <div class="name">Rapid7 InsightVM</div>
+          <div class="description">Pull asset risk scores.</div>
+        </div>
+        <span class="status-badge disconnected">Not connected</span>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Data Sources</h2>
+      <span class="count">Webhooks &amp; APIs</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Type</th>
+          <th>Last Event</th>
+          <th>Volume (24h)</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Endpoint Agent Telemetry</td>
+          <td>API</td>
+          <td>just now</td>
+          <td>1.2M events</td>
+          <td><span class="status-indicator connected">Healthy</span></td>
+        </tr>
+        <tr>
+          <td>Splunk Outbound Stream</td>
+          <td>Webhook</td>
+          <td>2m ago</td>
+          <td>87 events</td>
+          <td><span class="status-indicator connected">Healthy</span></td>
+        </tr>
+        <tr>
+          <td>Okta SCIM Sync</td>
+          <td>Webhook</td>
+          <td>14m ago</td>
+          <td>3 events</td>
+          <td><span class="status-indicator connected">Healthy</span></td>
+        </tr>
+        <tr>
+          <td>Slack Alert Webhook</td>
+          <td>Webhook</td>
+          <td>1h ago</td>
+          <td>12 events</td>
+          <td><span class="status-indicator connected">Healthy</span></td>
+        </tr>
+        <tr>
+          <td>Syslog Ingestion (UDP 514)</td>
+          <td>Listener</td>
+          <td>never</td>
+          <td>0 events</td>
+          <td><span class="status-indicator inactive">Inactive</span></td>
+        </tr>
+        <tr>
+          <td>Custom API Webhook #1</td>
+          <td>Webhook</td>
+          <td>never</td>
+          <td>0 events</td>
+          <td><span class="status-indicator inactive">Inactive</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</div>
+</body>
+</html>

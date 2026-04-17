@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Falcon Sentinel — Detections</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <script src="nav.js"></script>
+  <main>
+    <header class="page-head">
+      <div>
+        <h1>Detections</h1>
+        <div class="meta">156 events · last 7 days</div>
+      </div>
+      <button>Export to SIEM</button>
+    </header>
+
+    <div class="tabs">
+      <div class="tab-item active">All</div>
+      <div class="tab-item">Critical (4)</div>
+      <div class="tab-item">High (23)</div>
+      <div class="tab-item">Medium (74)</div>
+      <div class="tab-item">Low (55)</div>
+      <div class="tab-item">Suppressed (12)</div>
+    </div>
+
+    <form>
+      <div class="form-row">
+        <input type="search" placeholder="Filter by hash, technique, host, or user…">
+      </div>
+    </form>
+
+    <div class="card-grid">
+      <div class="metric-card">
+        <div class="label">Critical (7d)</div>
+        <div class="value down">4</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">High (7d)</div>
+        <div class="value warn">23</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">Auto-Resolved</div>
+        <div class="value up">88</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">Avg MTTR</div>
+        <div class="value">42m</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Severity</th>
+          <th>Detection</th>
+          <th>Endpoint</th>
+          <th>User</th>
+          <th>MITRE Technique</th>
+          <th>Status</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="severity critical">Critical</span></td>
+          <td>Mimikatz-style LSASS dump</td>
+          <td>WIN-LAPTOP-03</td>
+          <td>jane.doe@ex</td>
+          <td>T1003.001</td>
+          <td><span class="status-indicator active">Quarantined</span></td>
+          <td>1h ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity critical">Critical</span></td>
+          <td>Cobalt Strike beacon callback</td>
+          <td>SVR-PROD-02</td>
+          <td>—</td>
+          <td>T1071.001</td>
+          <td><span class="status-indicator active">Blocked</span></td>
+          <td>2h ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity high">High</span></td>
+          <td>PowerShell encoded command</td>
+          <td>WIN-DESKTOP-08</td>
+          <td>admin@ex</td>
+          <td>T1059.001</td>
+          <td><span class="status-indicator warning">Investigating</span></td>
+          <td>14m ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity high">High</span></td>
+          <td>Suspicious WMI persistence</td>
+          <td>WIN-DESKTOP-04</td>
+          <td>user1@ex</td>
+          <td>T1546.003</td>
+          <td><span class="status-indicator active">Resolved</span></td>
+          <td>5h ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity high">High</span></td>
+          <td>Scheduled task with Base64 args</td>
+          <td>WIN-DESKTOP-11</td>
+          <td>user2@ex</td>
+          <td>T1053.005</td>
+          <td><span class="status-indicator active">Resolved</span></td>
+          <td>8h ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity medium">Medium</span></td>
+          <td>Office macro execution</td>
+          <td>MAC-LAPTOP-05</td>
+          <td>contractor@ex</td>
+          <td>T1204.002</td>
+          <td><span class="status-indicator warning">Pending</span></td>
+          <td>4h ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity medium">Medium</span></td>
+          <td>Unusual outbound DNS</td>
+          <td>SVR-DEV-01</td>
+          <td>—</td>
+          <td>T1071.004</td>
+          <td><span class="status-indicator active">Resolved</span></td>
+          <td>6h ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity medium">Medium</span></td>
+          <td>Local admin group modification</td>
+          <td>WIN-DESKTOP-07</td>
+          <td>itadmin@ex</td>
+          <td>T1098</td>
+          <td><span class="status-indicator active">Verified</span></td>
+          <td>9h ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity low">Low</span></td>
+          <td>Login from new geo (Brazil)</td>
+          <td>—</td>
+          <td>user3@ex</td>
+          <td>T1078</td>
+          <td><span class="status-indicator active">Verified</span></td>
+          <td>11h ago</td>
+        </tr>
+        <tr>
+          <td><span class="severity low">Low</span></td>
+          <td>Browser extension installed</td>
+          <td>WIN-DESKTOP-09</td>
+          <td>user4@ex</td>
+          <td>T1176</td>
+          <td><span class="status-indicator inactive">Suppressed</span></td>
+          <td>14h ago</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</div>
+</body>
+</html>

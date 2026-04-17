@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Falcon Sentinel — Modules</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <script src="nav.js"></script>
+  <main>
+    <header class="page-head">
+      <div>
+        <h1>Modules</h1>
+        <div class="meta">28 features available · 9 active · 19 unused</div>
+      </div>
+      <div class="status-indicator warning">$84,000 / yr unused capacity</div>
+    </header>
+
+    <div class="alert warning">
+      <span>You are paying for 19 modules that have not been used in the past 90 days. Consider downgrading or activating.</span>
+    </div>
+
+    <div class="tabs">
+      <div class="tab-item active">All Modules</div>
+      <div class="tab-item">Active (9)</div>
+      <div class="tab-item">Unused (19)</div>
+      <div class="tab-item">Configuration</div>
+    </div>
+
+    <div class="section-header">
+      <h2>Detection &amp; Prevention</h2>
+      <span class="count">5 of 7 active</span>
+    </div>
+    <div class="card">
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Endpoint Detection (EDR)</div>
+          <div class="description">Real-time behavioral monitoring across all endpoints.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$48k / yr</span>
+          <span class="status-indicator active">Active · 12 endpoints</span>
+          <div class="module-toggle active"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Anti-Malware Engine</div>
+          <div class="description">Signature + heuristic malware detection.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator active">Active</span>
+          <div class="module-toggle active"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Application Control</div>
+          <div class="description">Allowlist / blocklist binary execution policies.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$8k / yr</span>
+          <span class="status-indicator active">Active</span>
+          <div class="module-toggle active"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Device Control (USB)</div>
+          <div class="description">Restrict removable media usage.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$6k / yr</span>
+          <span class="status-indicator inactive">Inactive · 0 policies</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Memory Protection</div>
+          <div class="description">Exploit prevention for in-memory attacks.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$12k / yr</span>
+          <span class="status-indicator inactive">Inactive · never enabled</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Web Content Filter</div>
+          <div class="description">URL category-based blocking.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$9k / yr</span>
+          <span class="status-indicator inactive">Inactive · 0 policies</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Email Threat Protection</div>
+          <div class="description">Phishing &amp; malicious attachment scanning.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator active">Active · M365 connected</span>
+          <div class="module-toggle active"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Identity &amp; Access</h2>
+      <span class="count">1 of 5 active</span>
+    </div>
+    <div class="card">
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Identity Threat Detection</div>
+          <div class="description">Detect anomalous authentication patterns.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$14k / yr</span>
+          <span class="status-indicator inactive">Inactive · IdP not connected</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Privileged Access Monitoring</div>
+          <div class="description">Track admin/root account usage.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$11k / yr</span>
+          <span class="status-indicator inactive">Inactive</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Service Account Inventory</div>
+          <div class="description">Discover and audit non-human identities.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$5k / yr</span>
+          <span class="status-indicator inactive">Inactive</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">SSO Health Monitor</div>
+          <div class="description">Track SAML / OIDC failures.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator active">Active · Okta connected</span>
+          <div class="module-toggle active"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">MFA Enforcement Reporter</div>
+          <div class="description">Identify accounts without MFA.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator inactive">Inactive · never opened</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Cloud &amp; Workload</h2>
+      <span class="count">0 of 6 active</span>
+    </div>
+    <div class="card">
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Cloud Workload Protection (AWS)</div>
+          <div class="description">Runtime defense for EC2/Lambda/EKS.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$22k / yr</span>
+          <span class="status-indicator disabled">Add-on · not purchased</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Container Image Scanner</div>
+          <div class="description">CVE scanning for container registries.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$8k / yr</span>
+          <span class="status-indicator inactive">Inactive · no registries connected</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Kubernetes Security Posture</div>
+          <div class="description">Misconfiguration detection across clusters.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$10k / yr</span>
+          <span class="status-indicator inactive">Inactive</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Cloud IAM Auditor</div>
+          <div class="description">Over-privileged role &amp; policy detection.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$7k / yr</span>
+          <span class="status-indicator inactive">Inactive</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">SaaS Posture Management</div>
+          <div class="description">Configuration drift across SaaS apps.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$13k / yr</span>
+          <span class="status-indicator inactive">Inactive</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">S3 Bucket Misconfiguration Scanner</div>
+          <div class="description">Public bucket and policy gap detection.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator inactive">Inactive · no AWS account linked</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Reporting &amp; Compliance</h2>
+      <span class="count">3 of 10 active</span>
+    </div>
+    <div class="card">
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Executive Dashboard</div>
+          <div class="description">Board-ready monthly threat summary.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator active">Active</span>
+          <div class="module-toggle active"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Compliance Mapping (SOC 2)</div>
+          <div class="description">Auto-map controls to SOC 2 framework.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator active">Active</span>
+          <div class="module-toggle active"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Compliance Mapping (HIPAA)</div>
+          <div class="description">Auto-map controls to HIPAA framework.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator inactive">Inactive · never opened</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Compliance Mapping (PCI-DSS)</div>
+          <div class="description">Auto-map controls to PCI-DSS framework.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator inactive">Inactive · never opened</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Audit Trail Export</div>
+          <div class="description">SIEM-ready event log streaming.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator active">Active · Splunk</span>
+          <div class="module-toggle active"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Risk Score Trending</div>
+          <div class="description">Historical risk score visualization.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$4k / yr</span>
+          <span class="status-indicator inactive">Inactive</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Custom Report Builder</div>
+          <div class="description">Drag-and-drop reporting interface.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$6k / yr</span>
+          <span class="status-indicator inactive">Inactive · 0 reports</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Scheduled Report Delivery</div>
+          <div class="description">Email reports on a schedule.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator inactive">Inactive · 0 schedules</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Forensic Recorder</div>
+          <div class="description">Continuous endpoint activity recording.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">$15k / yr</span>
+          <span class="status-indicator disabled">Add-on · not purchased</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+      <div class="module-row">
+        <div class="module-info">
+          <div class="name">Threat Intelligence Reports</div>
+          <div class="description">Weekly TI summary delivered to inbox.</div>
+        </div>
+        <div class="module-meta">
+          <span class="module-cost">Included</span>
+          <span class="status-indicator inactive">Inactive · unsubscribed</span>
+          <div class="module-toggle"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
