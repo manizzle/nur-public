@@ -10,7 +10,7 @@
     "tabs"
   ],
   "host_permissions": [
-    "https://nur.saramena.us/*",
+    "https://getnur.org/*",
     "https://*/*"
   ],
   "action": {

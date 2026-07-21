@@ -2,168 +2,117 @@
 
 # nur
 
-**Before you buy another security tool, know what you have.**
-
-<img src="demo/nur-demo.gif" alt="nur demo" width="750" />
+**A live census of the security tech the world actually runs.**
 
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square)](https://python.org)
+[![apps analyzed: 320](https://img.shields.io/badge/apps%20analyzed-320-22c55e?style=flat-square)](https://getnur.org/sdk)
+[![security SDKs: 27](https://img.shields.io/badge/security%20SDKs-27-22c55e?style=flat-square)](https://getnur.org/sdk)
+
+**[Explore the live census →](https://getnur.org/sdk)**
 
 </div>
 
 ---
 
-## The problem
+nur fingerprints the third-party **security and identity SDKs** embedded in public mobile-app binaries — no contributor, no telemetry, no cold start. We read which SDK is present straight from the shipped binary, the same way you'd read the ingredients off a label.
 
-Every month another vendor pitches you. Another demo. Another "we need to talk about your security posture."
+It's built on large-scale mobile binary analysis — the discipline of reading what's actually inside an app at scale — pointed at security posture rather than the adtech everyone else uses it for.
 
-You don't have time for it. The industry is bloated. You already own a dozen tools you barely use. Before you buy anything new, you need to answer four questions:
-
-1. **What does this tool actually do?** (not what the pitch deck says)
-2. **Do I already have something that does this?**
-3. **How do my current tools connect to each other?**
-4. **What are my peers paying for the same thing?**
-
-Nobody answers these today. Gartner costs six figures and vendors pay for their rankings. G2 reviews are gamed. DM-ing peers works, but it doesn't scale and nobody shares real numbers in public.
-
-**nur answers these questions in 60 seconds, from the tools you already have open.**
+**320 apps analyzed. 27 security SDKs detected across 11 categories. 49% of the top apps embed a detectable security SDK.**
 
 ---
 
-## How it works
+## Why this exists
 
-1. **Install the browser extension.** It's open source. It runs on your machine.
-2. **Visit the dashboards you already log into.** AWS, CrowdStrike, Splunk, Okta, whatever.
-3. **Click Scan.** You get a report showing what's unused, what's not integrated, and (once peers contribute) how your stack compares to similar companies.
+Every security buyer asks the same question and can't answer it: *which vendors are actually deployed inside the apps I trust with my money and identity — and are they any good?*
+
+The analysts don't know (Gartner runs surveys, not telemetry). The vendors won't say (their footprint is their competitive secret). And the firms that *can* detect embedded SDKs — 42matters, MightySignal, Sensor Tower — all sell it as adtech technographics for sales teams. **Nobody frames "which security SDK is in this app" as security posture intelligence.**
+
+nur does. And because the census is built entirely from public data, it's valuable on day one — before a single organization contributes anything. That solves the cold-start problem that kills every "collective defense" platform (IronNet raised $400M and went bankrupt waiting for contributors).
+
+---
+
+## What the census shows
+
+A neutral, dated map of which security/identity vendors lead each category across the top apps. A sample of what's in the live data at **[getnur.org/sdk](https://getnur.org/sdk)**:
+
+| Category | Leaders (by app count, July 2026) |
+|---|---|
+| Identity / KYC | Persona, Mitek (traditional banking), Onfido (crypto / EU fintech) |
+| Biometric auth | FaceTec — spreading from banking into dating apps |
+| Fraud detection | Forter, Sardine AI — reaching beyond fintech into retail |
+| Device integrity | Google Play Integrity, reCAPTCHA Enterprise |
+| Certificate pinning | TrustKit |
+
+The public tier reports **aggregate, vendor-named facts only** — presence, not verdicts. It is not a ranking, score, or recommendation. Vendor names are used nominatively. App-level detail (which specific apps run a given vendor) is available to registered users and vendor partners.
+
+---
+
+## Two data planes, one product
+
+nur maps the security tech the world actually runs — first from the outside, then from the inside.
 
 ```mermaid
 flowchart LR
-    A[You scan your<br/>dashboards] --> B[Your browser strips<br/>private data]
-    B --> C[Only anonymized<br/>counts get sent]
-    C --> D[You get a report:<br/>unused tools,<br/>integration gaps,<br/>peer benchmarks]
+    A[Public census<br/>read from app binaries] --> C[The intelligence layer<br/>for security buyers]
+    B[Private digital twin<br/>read from your own dashboards] --> C
 ```
 
-Nothing leaves your browser without your approval. Emails, IP addresses, employee names, hostnames, and dollar amounts are stripped before anything is sent. You see exactly what will be transmitted before you click submit. Every line of code is open source.
+- **The public census** (this repo's method) proves the technique on public data. Valuable at contributor-count zero.
+- **The private digital twin** brings the same lens inside your org: it reads your deployed security tools from the dashboards you already log into, anonymizes everything client-side, benchmarks against peers, and simulates named threats against your real stack. Try it → **[getnur.org/simulate](https://getnur.org/simulate)**
+
+Public data proves the method. Your own data makes it yours.
 
 ---
 
-## What you get back today
+## The method (open source)
 
-Install it, scan your stack. You immediately get:
+This repo demonstrates *how* the census reads SDKs from public binaries — the taxonomy and the reference approach, not the production fingerprint library.
 
-- **Shelfware X-ray.** Every tool, every feature, colored by whether you actually use it. A real dollar figure on the features nobody touches.
-- **Integration map.** Which of your tools talk to each other. Which should but don't.
+- **iOS:** third-party frameworks ship as named `.framework` directories inside the app bundle. The framework name is present in the unencrypted archive metadata — no decryption, no DRM circumvention. `Persona2.framework`, `Onfido.framework`, `TrustKit.framework` announce themselves.
+- **Android:** SDKs ship as Java/Kotlin classes inside the DEX. Package prefixes (`com.withpersona`, `io.sentry`, `com.datadog`) identify the vendor.
 
-Once 50 organizations have contributed, you also unlock:
+The 11-category security taxonomy (identity/KYC, app shielding/RASP, biometric auth, mobile threat defense, fraud detection, device integrity, bot protection, cert pinning, auth, payment security, MDM) is the schema everything hangs off.
 
-- **Peer benchmarks.** What similar companies pay. What they use. What they dropped and why.
-
-Until then, you still get value the moment you scan. You don't wait on anyone else.
+> **Legal basis.** Analyzing a binary you legitimately obtained to extract a functional fact is fair use (*Sega v. Accolade*, *Sony v. Connectix*). "Which SDK is present" is an unprotected fact (*Feist*). No DRM is circumvented — iOS framework names live in the unencrypted archive.
 
 ---
 
-## Who this is for
+## The private twin: client-side by construction
 
-You own security at a growing company: a YC Series A-D, a zfellows portfolio company, or the first security hire at a mid-sized startup. You don't have six figures to spend on Gartner. Your peer group isn't giving you hard numbers.
-
-**Install it. Scan one tool. Tell us what breaks.**
-
-First 50 contributors unlock peer benchmarks for the whole community.
-
----
-
-## Install
-
-1. Clone this repo or download the `extension/` folder
-2. Open `chrome://extensions` in Chrome
-3. Enable **Developer Mode** (top right)
-4. Click **Load unpacked** and select the `extension/` folder
-5. Navigate to any dashboard you already use
-6. Click the nur icon and hit **Full Scan**
-
-After scanning, click **Utilization Report** to see your shelfware and integration gaps.
-
-**Two modes:**
-- **Capture Page** — scans only the page you're on
-- **Full Scan** — crawls the entire dashboard, every tab, every section
-
----
-
-## CLI (for people who want to automate)
-
-```bash
-pip install nur
-nur init
-nur eval --vendor crowdstrike        # submit a vendor review
-nur market edr                       # see what peers actually use
-```
-
-Or contribute via web, no install needed: **[nur.saramena.us/contribute](https://nur.saramena.us/contribute)**
-
----
-
-## For security engineers
-
-If you want to vet this before installing, the things that matter:
-
-### What leaves your browser
-
-All anonymization runs client-side. Everything below is open source and auditable.
+The org-facing side of nur never sees your raw data. Everything sensitive is anonymized on your machine before anything is transmitted. This is auditable, open-source code.
 
 | Transmitted | Stripped before transmission |
 |------------|------------------------------|
-| Numeric scores (e.g. `9.2`) | Free-text notes |
-| Detection rates, utilization percentages | IP addresses, hostnames |
-| Boolean flags (`would_buy: true`) | Employee names, organization identity |
-| Hashed threat indicators (SHA-256) | Network topology |
-| Product feature identifiers | Raw dollar amounts (bucketed instead) |
-| MITRE technique IDs (`T1566`) | Sigma rules, action strings |
-
-After aggregation on the server, individual values are discarded. Only commitment hashes and running totals are retained. No per-organization attribution is possible.
+| Numeric scores, utilization percentages | Free-text notes |
+| Boolean flags (`feature_enabled: true`) | IP addresses, hostnames |
+| Hashed indicators (SHA-256) | Employee names, organization identity |
+| Product / feature identifiers | Network topology |
+| MITRE technique IDs (`T1566`) | Raw dollar amounts (bucketed instead) |
 
 ### Cryptographic guarantees
 
-- **Pedersen commitments** — the server cannot change your values after receipt
-- **Merkle trees** — the server cannot add or remove contributions without detection
-- **Zero-knowledge range proofs** — scores can be validated without revealing them
-- **Client-side anonymization** — everything runs on your machine before transmission
+- **Pedersen commitments** — the server cannot alter your values after receipt
+- **Merkle trees** — the server cannot add or drop contributions undetected
+- **Zero-knowledge range proofs** — values validated without being revealed
+- **Client-side anonymization** — everything runs on your machine first
 - **Dice chains** — end-to-end hash attestation from source to aggregate
 
-### Full protocol
-
-```mermaid
-sequenceDiagram
-    autonumber
-    participant C as Client
-    participant S as Server
-    participant Q as Querier
-
-    rect rgb(235, 245, 235)
-    Note over C,Q: Contribution
-    Note over C: Scrub PII locally
-    Note over C: Compute feature vector
-    C->>S: POST /contribute/submit
-    S->>S: Validate, commit (Pedersen), aggregate
-    S->>S: Discard individual values
-    S-->>C: Receipt (commitment + signature)
-    end
-
-    rect rgb(235, 235, 245)
-    Note over C,Q: Query
-    Q->>S: GET /aggregate/{vendor}
-    S-->>Q: Aggregate + Merkle proof
-    Q->>Q: Verify locally
-    end
-```
-
-### Regulatory compliance
+### Regulatory posture
 
 - **HIPAA Safe Harbor** (45 CFR 164.514(b)) — all 18 identifiers removed and verified programmatically
-- **GDPR Recital 26** — re-identification risk assessed across four vectors; individual values discarded
-- **CISA 2015** — threat intelligence sharing carries explicit liability shield, antitrust exemption, and FOIA exemption
-- **Attorney-client privilege preserved** — incident response firms contribute technique IDs and detection rates, never forensic report content
+- **GDPR Recital 26** — re-identification risk assessed; individual values discarded
+- **CISA 2015** — threat-intelligence sharing carries an explicit liability shield
+- **Attorney-client privilege preserved** — IR firms contribute technique IDs and detection rates, never forensic report content
 
-The code is open source. Compliance is verifiable, not a vendor assertion.
+The two planes are architecturally walled: the public census contains **no contributed data at all**, and the private twin discards individual values after aggregation. Compliance is verifiable in code, not a vendor assertion.
+
+---
+
+## Who's building this
+
+nur is built by Murtaza Munaim — 15 years in offensive security: staff hardware security engineer at Google breaking secure boot and firmware, Square's security team, and Visa's mobile red team. Large-scale mobile binary analysis has been the through-line the whole way.
 
 ---
 
@@ -173,9 +122,7 @@ Building in the open. Want to talk about what you're seeing in the field, or get
 
 <div align="center">
 
-**[Message me on Signal](https://signal.me/#eu/priXbXasKbQOYugFXOJKfokwZCFrS94cKAOwBlV0tIZ8d563wcpIXIQYRpIdG3p_)**
-
-[nur.saramena.us](https://nur.saramena.us)
+**[hello@getnur.org](mailto:hello@getnur.org)** &nbsp;·&nbsp; **[getnur.org](https://getnur.org)**
 
 </div>
 
