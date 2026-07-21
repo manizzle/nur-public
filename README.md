@@ -2,7 +2,7 @@
 
 # nur
 
-**A live census of the security tech the world actually runs.**
+**The map of the mobile app security supply chain.**
 
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square)](https://python.org)
@@ -15,7 +15,7 @@
 
 ---
 
-nur fingerprints the third-party **security and identity SDKs** embedded in public mobile-app binaries — no contributor, no telemetry, no cold start. We read which SDK is present straight from the shipped binary, the same way you'd read the ingredients off a label.
+Every app you trust with your money and identity runs a supply chain of third-party **security and identity SDKs** — and nobody has a map of it. nur fingerprints them straight from public mobile-app binaries: no contributor, no telemetry, no cold start. We read which SDK is present straight from the shipped binary, the same way you'd read the ingredients off a label.
 
 It's built on large-scale mobile binary analysis — the discipline of reading what's actually inside an app at scale — pointed at security posture rather than the adtech everyone else uses it for.
 
